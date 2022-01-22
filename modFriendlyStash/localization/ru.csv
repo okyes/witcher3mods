@@ -1,0 +1,40 @@
+;meta[language=ru]
+; id      |key(hex)|key(str)| text
+;
+; comment lines use ; as first character
+; all comment lines (except the two line header) will be ignored
+;
+2112824000|        |panel_Mods|Mods
+2112824001|        |panel_friendly_stash|Friendly Stash
+2112824002|        |PanelStash|Тайник
+2112824003|        |option_fs_stash_sync_toggle|Включить синхронный режим тайника по умолчанию
+2112824004|        |fs_synchronized_inv_mode|Синхронный режим
+2112824005|        |fs_normal_inv_mode|Инвентарь игрока
+2112824006|        |fs_stash_inv_mode|Инвентарь тайника
+2112824007|        |fs_switch_inv_mode|Сменить режим
+2112824009|        |option_fs_stash_menu_mode|Доступ к тайнику через меню
+2112824010|        |preset_value_fs_menu_mode_view|Просмотр
+2112824011|        |preset_value_fs_menu_mode_full|Полный
+2112824012|        |preset_value_fs_menu_mode_settlement|Поселения
+2112824014|        |preset_value_fs_menu_mode_distance|Расстояние
+2112824015|        |option_fs_stash_merchant_mode|Доступ к тайнику у продавцов
+2112824016|        |option_fs_stash_distance|Макс. допустимое расстояние
+2112824017|        |option_fs_stash_crafting_mode|Доступ к тайнику для крафта и разбора
+2112824018|        |option_fs_stash_roach|Использовать Плотву как тайник
+2112824019|        |option_fs_stash_alchemy_mode|Доступ к тайнику в меню алхимии
+2112824020|        |preset_value_fs_menu_mode_alchemists|Алхимики
+2112824021|        |preset_value_fs_menu_mode_off|Выкл.
+2112824022|        |preset_value_fs_defaults|По умолчанию
+2112824023|        |preset_Mods_friendly_stash|Предустановки тайника
+2112824024|        |preset_value_fs_roach|Плотва
+2112824025|        |preset_value_fs_full|Полный доступ
+2112824026|        |option_fs_bags_roach|Использовать сумки для Плотвы
+2112824027|        |fs_show_horse_enc|Плотва
+2112824028|        |fs_horse_overenc|Лошадь перегружена!
+2112824029|        |fs_horse_no_gallop|Нельзя скакать галопом!
+2112824030|        |fs_horse_no_call|Нельзя позвать лошадь на расстоянии!
+2112824031|        |fs_horse_good|Лошадь больше не перегружена.
+2112824032|        |option_fs_player_weight|Базовый носимый вес для Геральта
+2112824033|        |option_fs_roach_weight|Базовый носимый вес для Плотвы
+2112824034|        |option_fs_roach_mult|Мультипликатор бонусного веса для сумок
+2112824035|        |option_fs_disable_chests|Запретить доступ к тайнику через сундуки
