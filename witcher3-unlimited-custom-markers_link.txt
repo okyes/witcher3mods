@@ -1,0 +1,2 @@
+from https://forums.nexusmods.com/index.php?/topic/4575465-mod-requesthelp-more-custom-map-markers/
+v0.1
