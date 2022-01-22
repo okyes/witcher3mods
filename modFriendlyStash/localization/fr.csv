@@ -1,0 +1,40 @@
+;meta[language=fr]
+; id      |key(hex)|key(str)| text
+;
+; comment lines use ; as first character
+; all comment lines (except the two line header) will be ignored
+;
+2112824000|        |panel_Mods|Mods
+2112824001|        |panel_friendly_stash|Friendly Stash
+2112824002|        |PanelStash|Menu Réserve
+2112824003|        |option_fs_stash_sync_toggle|Utiliser le mode de réserve synchronisée par défaut
+2112824004|        |fs_synchronized_inv_mode|Mode synchronisé
+2112824005|        |fs_normal_inv_mode|Mode inventaire du joueur
+2112824006|        |fs_stash_inv_mode|Mode Réserve
+2112824007|        |fs_switch_inv_mode|Changer de mode
+2112824009|        |option_fs_stash_menu_mode|Mode d'accès au menu de la réserve
+2112824010|        |preset_value_fs_menu_mode_view|Vue
+2112824011|        |preset_value_fs_menu_mode_full|Total
+2112824012|        |preset_value_fs_menu_mode_settlement|Zones peuplées
+2112824014|        |preset_value_fs_menu_mode_distance|Distance
+2112824015|        |option_fs_stash_merchant_mode|Accès à la réserve aux marchands
+2112824016|        |option_fs_stash_distance|Distance max autorisée
+2112824017|        |option_fs_stash_crafting_mode|Accès à la réserve pour artisanat et désassemblement
+2112824018|        |option_fs_stash_roach|Utiliser Ablette comme réserve
+2112824019|        |option_fs_stash_alchemy_mode|Accès à la réserve pour le menu d'alchimie
+2112824020|        |preset_value_fs_menu_mode_alchemists|Alchimistes
+2112824021|        |preset_value_fs_menu_mode_off|Off
+2112824022|        |preset_value_fs_defaults|Par défaut
+2112824023|        |preset_Mods_friendly_stash|Preset Réserve
+2112824024|        |preset_value_fs_roach|Ablette
+2112824025|        |preset_value_fs_full|Accès total
+2112824026|        |option_fs_bags_roach|Use bags for Roach encumbrance
+2112824027|        |fs_show_horse_enc|Roach
+2112824028|        |fs_horse_overenc|Your horse is overencumbered!
+2112824029|        |fs_horse_no_gallop|Gallop is unavailable!
+2112824030|        |fs_horse_no_call|Call horse is unavailable!
+2112824031|        |fs_horse_good|Your horse is no longer overencumbered.
+2112824032|        |option_fs_player_weight|Base weight limit for Geralt
+2112824033|        |option_fs_roach_weight|Base weight limit for Roach
+2112824034|        |option_fs_roach_mult|Bags weight bonus multiplier
+2112824035|        |option_fs_disable_chests|Disable stash access via chests

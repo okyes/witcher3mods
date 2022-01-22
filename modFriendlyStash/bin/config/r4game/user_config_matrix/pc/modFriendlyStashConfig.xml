@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<UserConfig>
+   
+    <Group id="modFriendlyStash" displayName="Mods.friendly_stash">
+		<PresetsArray>
+			<Preset id="0" displayName="fs_defaults">
+				<Entry varId="FSStashSync" value="true"/>
+				<Entry varId="FSStashMenuMode" value="0"/>
+				<Entry varId="FSStashMerchantMode" value="0"/>
+				<Entry varId="FSStashAlchemyMode" value="4"/>
+				<Entry varId="FSStashCraftingMode" value="1"/>
+				<Entry varId="FSStashDistance" value="50"/>
+				<Entry varId="FSStashRoach" value="false"/>
+				<Entry varId="FSBagsRoach" value="false"/>
+				<Entry varId="FSPlayerWeightBase" value="60"/>
+				<Entry varId="FSRoachWeightBase" value="0"/>
+				<Entry varId="FSRoachWeightMult" value="1"/>
+				<Entry varId="FSDisableChests" value="false"/>
+			</Preset>
+			<Preset id="1" displayName="fs_roach">
+				<Entry varId="FSStashSync" value="true"/>
+				<Entry varId="FSStashMenuMode" value="3"/>
+				<Entry varId="FSStashMerchantMode" value="3"/>
+				<Entry varId="FSStashAlchemyMode" value="3"/>
+				<Entry varId="FSStashCraftingMode" value="3"/>
+				<Entry varId="FSStashDistance" value="20"/>
+				<Entry varId="FSStashRoach" value="true"/>
+				<Entry varId="FSBagsRoach" value="true"/>
+				<Entry varId="FSPlayerWeightBase" value="60"/>
+				<Entry varId="FSRoachWeightBase" value="60"/>
+				<Entry varId="FSRoachWeightMult" value="1"/>
+				<Entry varId="FSDisableChests" value="true"/>
+			</Preset>
+			<Preset id="2" displayName="fs_full">
+				<Entry varId="FSStashSync" value="true"/>
+				<Entry varId="FSStashMenuMode" value="1"/>
+				<Entry varId="FSStashMerchantMode" value="1"/>
+				<Entry varId="FSStashAlchemyMode" value="1"/>
+				<Entry varId="FSStashCraftingMode" value="1"/>
+				<Entry varId="FSStashDistance" value="50"/>
+				<Entry varId="FSStashRoach" value="false"/>
+				<Entry varId="FSBagsRoach" value="false"/>
+				<Entry varId="FSPlayerWeightBase" value="60"/>
+				<Entry varId="FSRoachWeightBase" value="0"/>
+				<Entry varId="FSRoachWeightMult" value="1"/>
+				<Entry varId="FSDisableChests" value="false"/>
+			</Preset>
+		</PresetsArray>
+        <VisibleVars>
+            <Var id="FSStashSync" displayName="fs_stash_sync_toggle" displayType="TOGGLE"/>
+            <Var id="Virtual_FSStashMenuMode" displayName="fs_stash_menu_mode" displayType="OPTIONS" >
+				<OptionsArray>
+					<Option id="0" displayName="fs_menu_mode_view">
+						<Entry varId="FSStashMenuMode" value="0"/>
+					</Option>
+					<Option id="1" displayName="fs_menu_mode_full">
+						<Entry varId="FSStashMenuMode" value="1"/>
+					</Option>
+					<Option id="2" displayName="fs_menu_mode_settlement">
+						<Entry varId="FSStashMenuMode" value="2"/>
+					</Option>
+					<Option id="3" displayName="fs_menu_mode_distance">
+						<Entry varId="FSStashMenuMode" value="3"/>
+					</Option>
+				</OptionsArray>
+			</Var>
+            <Var id="Virtual_FSStashMerchantMode" displayName="fs_stash_merchant_mode" displayType="OPTIONS" >
+				<OptionsArray>
+					<Option id="0" displayName="fs_menu_mode_view">
+						<Entry varId="FSStashMerchantMode" value="0"/>
+					</Option>
+					<Option id="1" displayName="fs_menu_mode_full">
+						<Entry varId="FSStashMerchantMode" value="1"/>
+					</Option>
+					<Option id="2" displayName="fs_menu_mode_settlement">
+						<Entry varId="FSStashMerchantMode" value="2"/>
+					</Option>
+					<Option id="3" displayName="fs_menu_mode_distance">
+						<Entry varId="FSStashMerchantMode" value="3"/>
+					</Option>
+				</OptionsArray>
+			</Var>
+            <Var id="Virtual_FSStashAlchemyMode" displayName="fs_stash_alchemy_mode" displayType="OPTIONS" >
+				<OptionsArray>
+					<Option id="0" displayName="fs_menu_mode_off">
+						<Entry varId="FSStashAlchemyMode" value="0"/>
+					</Option>
+					<Option id="1" displayName="fs_menu_mode_full">
+						<Entry varId="FSStashAlchemyMode" value="1"/>
+					</Option>
+					<Option id="2" displayName="fs_menu_mode_settlement">
+						<Entry varId="FSStashAlchemyMode" value="2"/>
+					</Option>
+					<Option id="3" displayName="fs_menu_mode_distance">
+						<Entry varId="FSStashAlchemyMode" value="3"/>
+					</Option>
+					<Option id="4" displayName="fs_menu_mode_alchemists">
+						<Entry varId="FSStashAlchemyMode" value="4"/>
+					</Option>
+				</OptionsArray>
+			</Var>
+            <Var id="Virtual_FSStashCraftingMode" displayName="fs_stash_crafting_mode" displayType="OPTIONS" >
+				<OptionsArray>
+					<Option id="0" displayName="fs_menu_mode_off">
+						<Entry varId="FSStashCraftingMode" value="0"/>
+					</Option>
+					<Option id="1" displayName="fs_menu_mode_full">
+						<Entry varId="FSStashCraftingMode" value="1"/>
+					</Option>
+					<Option id="2" displayName="fs_menu_mode_settlement">
+						<Entry varId="FSStashCraftingMode" value="2"/>
+					</Option>
+					<Option id="3" displayName="fs_menu_mode_distance">
+						<Entry varId="FSStashCraftingMode" value="3"/>
+					</Option>
+				</OptionsArray>
+			</Var>
+            <Var id="FSStashDistance" displayName="fs_stash_distance" displayType="SLIDER;0;300;300"/>
+            <Var id="FSStashRoach" displayName="fs_stash_roach" displayType="TOGGLE"/>
+            <Var id="FSBagsRoach" displayName="fs_bags_roach" displayType="TOGGLE"/>
+            <Var id="FSPlayerWeightBase" displayName="fs_player_weight" displayType="SLIDER;0;1000;1000"/>
+            <Var id="FSRoachWeightBase" displayName="fs_roach_weight" displayType="SLIDER;0;1000;1000"/>
+            <Var id="FSRoachWeightMult" displayName="fs_roach_mult" displayType="SLIDER;0;10;20"/>
+            <Var id="FSDisableChests" displayName="fs_disable_chests" displayType="TOGGLE"/>
+        </VisibleVars>
+    </Group>
+	
+</UserConfig>

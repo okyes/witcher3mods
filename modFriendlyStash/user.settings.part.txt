@@ -1,0 +1,12 @@
+[modFriendlyStash]
+FSStashSync=true
+FSStashMenuMode=0
+FSStashMerchantMode=0
+FSStashAlchemyMode=4
+FSStashCraftingMode=1
+FSStashDistance=50
+FSStashRoach=false
+FSPlayerWeightBase=60
+FSRoachWeightBase=0
+FSRoachWeightMult=1
+FSDisableChests=false
