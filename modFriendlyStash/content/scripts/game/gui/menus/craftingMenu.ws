@@ -661,6 +661,18 @@ class CR4CraftingMenu extends CR4ListBaseMenu
 		m_flashValueStorage.SetFlashString(DATA_BINDING_NAME_DESCRIPTION+".text",description);	
 	}	
 	
+	function GetItemQuantity( id : int ) : int //modFriendlyStash: count stash items for crafting
+	{
+		if ( m_definitionsManager.ItemHasTag( itemsNames[id], 'MutagenIngredient' ) )
+		{
+			return GetWitcherPlayer().GetMutagenQuantityByNameForCrafting(itemsNames[id], GetFriendlyStashConfig().IsCraftingAccessAllowed());
+		}
+		else
+		{
+			return GetWitcherPlayer().GetItemQuantityByNameForCrafting(itemsNames[id], GetFriendlyStashConfig().IsCraftingAccessAllowed());
+		}
+	}
+	
 	function  UpdateItems( tag : name )
 	{
 		var itemsFlashArray			: CScriptedFlashArray;

@@ -68,7 +68,7 @@ class W3GuiShopInventoryComponent extends W3GuiBaseInventoryComponent
 			quantity = 1;
 		}
 
-		customerMoney = customer._inv.GetMoney();
+		customerMoney = customer.m_ownerInv.GetMoney(); //modFriendlyStash
 
 		invItem = _inv.GetItem( itemId );
 		
@@ -79,7 +79,7 @@ class W3GuiShopInventoryComponent extends W3GuiBaseInventoryComponent
 			success = super.GiveItem( itemId, customer, quantity, newItemID );
 			if ( success )
 			{
-				customer._inv.RemoveMoney( itemPrice );
+				customer.m_ownerInv.RemoveMoney( itemPrice ); //modFriendlyStash
 				
 				if ( !ShopHasInfiniteFunds() )
 				{
@@ -115,7 +115,7 @@ class W3GuiShopInventoryComponent extends W3GuiBaseInventoryComponent
 				{
 					_inv.RemoveMoney( itemCost );
 				}
-				giver._inv.AddMoney( itemCost );
+				giver.m_ownerInv.AddMoney( itemCost ); //modFriendlyStash
 			}
 		}
 		return success;

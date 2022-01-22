@@ -71,7 +71,9 @@ class W3GuiTakeOnlyContainerInventoryComponent extends W3CommonContainerInventor
 
 class W3GuiContainerInventoryComponent extends W3CommonContainerInventoryComponent 
 {
-	public var dontShowEquipped:bool; default dontShowEquipped = false;
+	//public var dontShowEquipped:bool; default dontShowEquipped = false; //modFriendlyStash: moved to base class
+	public var syncWithPlayer : bool; default syncWithPlayer = false; //modFriendlyStash
+	public var playerTabIndex : int; default playerTabIndex = -1; //modFriendlyStash
 	
 	public function ReceiveItem( item : SItemUniqueId, giver : W3GuiBaseInventoryComponent, optional quantity : int, optional newItemID : SItemUniqueId  ) : bool 
 	{
@@ -100,7 +102,7 @@ class W3GuiContainerInventoryComponent extends W3CommonContainerInventoryCompone
 	
 	protected function ShouldShowItem( item : SItemUniqueId ) : bool
 	{
-		if (dontShowEquipped)
+		/*if (dontShowEquipped)
 		{
 			if (isHorseItem(item))
 			{
@@ -116,9 +118,47 @@ class W3GuiContainerInventoryComponent extends W3CommonContainerInventoryCompone
 					return false;
 				}
 			}
+		}*/ //modFriendlyStash: moved to base class
+		
+		if( syncWithPlayer && playerTabIndex != -1 ) //modFriendlyStash
+		{
+			if( GetTabForItem( item ) != playerTabIndex )
+			{
+				return false;
+			}
 		}
 		
 		return super.ShouldShowItem( item );
+	}
+	
+	function GetTabForItem( item : SItemUniqueId ) : int //modFriendlyStash
+	{
+		var isJunk, isTrophy : bool;
+		
+		isTrophy = _inv.IsItemTrophy( item );
+		isJunk = ( !isItemReadable(item) && !isFoodItem(item) && !isIngredientItem( item ) && !isWeaponItem( item ) && !isArmorItem( item ) && !isAlchemyItem( item ) && !isUpgradeItem( item ) && !isItemSchematic( item ) && !isToolItem(item) && !isHorseItem( item ) && !isTrophy );
+		
+		if( isIngredientItem( item ) && !IsItemDye( item ) )
+		{
+			return 0;
+		}
+		if( isQuestItem( item ) || ( ( isJunk || isItemReadable( item ) ) && !isQuickslotItem( item ) && !isTrophy ) )
+		{
+			return 1;
+		}
+		if( isFoodItem( item ) || isHorseItem( item ) )
+		{
+			return 2;
+		}
+		if( isAlchemyItem( item ) && !isFoodItem( item ) && !isItemUsable( item ) && !IsItemDye( item ) )
+		{
+			return 3;
+		}
+		if( isWeaponItem( item ) || isArmorItem( item ) || isUpgradeItem( item ) || isToolItem( item ) || isItemUsable( item ) || isQuickslotItem( item ) || IsItemDye( item ) )
+		{
+			return 4;
+		}
+		return 4;
 	}
 	
 	protected function GridPositionEnabled() : bool

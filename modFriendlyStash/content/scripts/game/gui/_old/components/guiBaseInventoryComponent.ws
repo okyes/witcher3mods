@@ -19,10 +19,17 @@ abstract class W3GuiBaseInventoryComponent
 	
 	private var ITEM_NEED_REPAIR_DISPLAY_VALUE : int;
 		
+	public var m_horseInv : CInventoryComponent; //modFriendlyStash
+	public var m_ownerInv : CInventoryComponent; //modFriendlyStash
+	
+	public var dontShowEquipped:bool; default dontShowEquipped = false; //modFriendlyStash: moved from container
+	
 	public function Initialize( inv : CInventoryComponent )
 	{
 		ITEM_NEED_REPAIR_DISPLAY_VALUE = theGame.params.ITEM_DAMAGED_DURABILITY;
 		_inv = inv;
+		m_ownerInv = inv; //modFriendlyStash
+		m_horseInv = GetWitcherPlayer().GetHorseManager().GetInventoryComponent(); //modFriendlyStash
 	}
 	
 	
@@ -32,9 +39,36 @@ abstract class W3GuiBaseInventoryComponent
 	
 	
 		
+	public function SetCurrentInventory( invComp : CInventoryComponent ) //modFriendlyStash
+	{
+		_inv = invComp;
+	}
+
+	public function SwitchToHorse( bDontShowEquipped : bool ) //modFriendlyStash
+	{
+		_inv = m_horseInv;
+		dontShowEquipped = bDontShowEquipped;
+	}
+
+	public function SwitchToOwner( bDontShowEquipped : bool ) //modFriendlyStash
+	{
+		_inv = m_ownerInv;
+		dontShowEquipped = bDontShowEquipped;
+	}
+
 	public function GetInventoryComponent() : CInventoryComponent
 	{
 		return _inv;
+	}
+
+	public function IsHorse() : bool //modFriendlyStash
+	{
+		return _inv == m_horseInv;
+	}
+
+	public function IsOwner() : bool //modFriendlyStash
+	{
+		return _inv == m_ownerInv;
 	}
 
 	public function GetItemName(item : SItemUniqueId):name
@@ -203,6 +237,24 @@ abstract class W3GuiBaseInventoryComponent
 		if(_inv.GetEntity() == thePlayer && itemTags.Contains( theGame.params.TAG_DONT_SHOW_ONLY_IN_PLAYERS))
 		{
 			return false;
+		}
+		
+		if (dontShowEquipped) //modFriendlyStash: moved from container inv component
+		{
+			if (isHorseItem(item))
+			{
+				if (GetWitcherPlayer().GetHorseManager().IsItemEquipped(item))
+				{
+					return false;
+				}
+			}
+			else
+			{
+				if ( _inv == GetWitcherPlayer().GetInventory() && GetWitcherPlayer().IsItemEquipped(item))
+				{
+					return false;
+				}
+			}
 		}
 		
 		return true;

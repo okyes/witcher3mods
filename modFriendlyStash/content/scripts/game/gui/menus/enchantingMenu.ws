@@ -228,7 +228,7 @@ class CR4EnchantingMenu extends CR4MenuBase
 					ingredientData = m_flashValueStorage.CreateTempFlashObject();
 					curIngredientName  = schematic.ingredients[j].itemName;
 					requiredIngredientsCount = schematic.ingredients[j].quantity;
-					availableIngredientsCount = m_playerInventory.GetItemQuantityByName(curIngredientName);
+					availableIngredientsCount = GetWitcherPlayer().GetItemQuantityByNameForCrafting(curIngredientName, GetFriendlyStashConfig().IsCraftingAccessAllowed()); //modFriendlyStash: count stash items
 					m_playerInventory.GetItemQualityFromName(curIngredientName, minQuality, maxQuality);
 					ingredientLocName = GetLocStringByKeyExt(m_definitionsManager.GetItemLocalisationKeyName(curIngredientName));
 					
@@ -436,7 +436,7 @@ class CR4EnchantingMenu extends CR4MenuBase
 			for (i = 0; i < ingredientsCount; i=i+1 )
 			{
 				curIngredient = enchantSchematic.ingredients[i];
-				m_playerInventory.RemoveItemByName(curIngredient.itemName, curIngredient.quantity);
+				GetWitcherPlayer().RemoveItemByNameForCrafting(curIngredient.itemName, curIngredient.quantity, GetFriendlyStashConfig().IsCraftingAccessAllowed()); //modFriendlyStash: count stash items
 			}
 			
 			

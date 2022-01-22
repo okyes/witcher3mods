@@ -76,6 +76,7 @@ class CR4InventoryMenu extends CR4MenuBase
 	protected var _currentState : EInventoryMenuState;	
 	private var optionsItemActions : array<EInventoryActionType>;
 	private var _sentStats : array<SentStatsData>;
+	public var _disableStashContext : bool; default _disableStashContext = false; //modFriendlyStash
 	
 	private var _currentQuickSlot : EEquipmentSlots;
 	default _currentQuickSlot = EES_InvalidSlot;
@@ -219,6 +220,8 @@ class CR4InventoryMenu extends CR4MenuBase
 		_horsePaperdollInv = new  W3GuiHorseInventoryComponent in this;
 		_horsePaperdollInv.Initialize(GetWitcherPlayer().GetHorseManager().GetInventoryComponent());
 		
+		RoachWasOverencumbered = GetWitcherPlayer().GetHorseManager().IsOverencumbered(); //modFriendlyStash
+		
 		_tooltipDataProvider = new W3TooltipComponent in this;
 		_tooltipDataProvider.initialize(_inv, m_flashValueStorage);
 		
@@ -309,6 +312,11 @@ class CR4InventoryMenu extends CR4MenuBase
 		{
 			_defaultInventoryState = IMS_Stash;
 		}
+		else if ( m_menuState == 'StashInventory' ) //modFriendlyStash
+		{
+			_defaultInventoryState = IMS_Stash;
+			_disableStashContext = !GetFriendlyStashConfig().IsStashMenuAccessAllowed();
+		}
 		else
 		{
 			_defaultInventoryState = IMS_Player;
@@ -326,6 +334,12 @@ class CR4InventoryMenu extends CR4MenuBase
 		
 		m_menuInited = true;
 		if (m_menuState == '') m_menuState = 'CharacterInventory';
+		if( _defaultInventoryState == IMS_Stash && GetFriendlyStashConfig().GetSyncModeByDefault() ) //modFriendlyStash: sync stash mode by default
+		{
+			_horseInv.syncWithPlayer = true;
+			_horseInv.playerTabIndex = defaultTab;
+			showNotification( GetLocStringByKeyExt( "fs_synchronized_inv_mode" ) );
+		}
 		ApplyMenuState(m_menuState);
 		
 		_currentEqippedQuickSlot = GetCurrentEquippedQuickSlot();
@@ -579,6 +593,12 @@ class CR4InventoryMenu extends CR4MenuBase
 		
 		currentlySelectedTab = tabIndex;
 		
+		if( _currentState == IMS_Stash && _horseInv.syncWithPlayer ) //modFriendlyStash
+		{
+			_horseInv.playerTabIndex = currentlySelectedTab;
+			UpdateHorseInventory();
+		}
+		
 		if(tabIndex == InventoryMenuTab_Potions && ShouldProcessTutorial('TutorialPotionCanEquip2'))
 		{
 			tutStatePot = (W3TutorialManagerUIHandlerStatePotions)theGame.GetTutorialSystem().uiHandler.GetCurrentState();
@@ -799,6 +819,8 @@ class CR4InventoryMenu extends CR4MenuBase
 		
 		
 		UpdateItemsCounter();
+		
+		UpdateRoachEncumbrance(); //modFriendlyStash
 	}
 	
 	public function GetCurrentInventoryState():EInventoryMenuState
@@ -832,7 +854,7 @@ class CR4InventoryMenu extends CR4MenuBase
 				m_fxSetFilteringMode.InvokeSelfOneArg(FlashArgBool(false));
 				break;
 			case IMS_Stash:
-				_playerInv.stashMode = true;
+				_playerInv.stashMode = (theGame.GameplayFactsQuerySum("stashMode") == 1); //modFriendlyStash
 				_horseInv.dontShowEquipped = true;
 				UpdateHorseInventory();
 				break;
@@ -917,6 +939,9 @@ class CR4InventoryMenu extends CR4MenuBase
 		{
 			case 'CharacterInventory':
 				SetInventoryState(_defaultInventoryState);
+				break;
+			case 'StashInventory':	//modFriendlyStash
+				SetInventoryState(IMS_Stash);
 				break;
 			case 'HorseInventory':
 				SetInventoryState(IMS_HorseInventory);
@@ -1297,7 +1322,7 @@ class CR4InventoryMenu extends CR4MenuBase
 		}
 		else
 		{
-			return _inv;
+			return _playerInv.GetInventoryComponent(); //modFriendlyStash
 		}
 	}
 	
@@ -2054,6 +2079,14 @@ class CR4InventoryMenu extends CR4MenuBase
 		var i		    : int;
 		var filterType  : EInventoryFilterType;
 		
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
+		
 		OnSlot = false;
 		itemAlreadyEuipped = false;
 		
@@ -2575,6 +2608,14 @@ class CR4InventoryMenu extends CR4MenuBase
 	
 	event  OnDropItem( item : SItemUniqueId, quantity : int ) 
 	{
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
+		
 		if (( _inv.ItemHasTag(item, 'SilverOil') || _inv.ItemHasTag(item, 'SteelOil') || _inv.ItemHasTag(item, 'Petard') || ( _inv.ItemHasTag(item, 'Potion') && _inv.GetItemCategory(item)!='edibles' ) ) && _playerInv.CanDrop(item))
 		{
 			if (_destroyConfPopData)
@@ -2680,6 +2721,14 @@ class CR4InventoryMenu extends CR4MenuBase
 		var filterType : EInventoryFilterType;
 		var newItemID  : SItemUniqueId;
 		
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
+		
 		if( _currentInv == _containerInv )
 		{
 			_containerInv.GiveItem( item, _playerInv, quantity, newItemID );
@@ -2709,6 +2758,14 @@ class CR4InventoryMenu extends CR4MenuBase
 		var invItem : SInventoryItem;
 		var itemPrice : int;
         var newShopItem : SItemUniqueId;
+		
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
 		
 		if (!_playerInv.GetInventoryComponent().IsIdValid(itemId))
 		{
@@ -2760,6 +2817,14 @@ class CR4InventoryMenu extends CR4MenuBase
 		var tutorialState : W3TutorialManagerUIHandlerStateShop;
 		var result : bool;
 		
+		
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
 		
 		LogChannel('QP', "OnBuyItem, quantity: " + quantity);
 		itemName = _shopInv.GetItemName(item);
@@ -2989,6 +3054,14 @@ class CR4InventoryMenu extends CR4MenuBase
 		var itemOnSlot :SItemUniqueId;
 		var boltSlot : SItemUniqueId;
 		var updateBoltsInInv : bool;		
+		
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
 		
 		updateBoltsInInv = false;		
 		
@@ -3306,6 +3379,95 @@ class CR4InventoryMenu extends CR4MenuBase
 		{
 			_currentInv = _playerInv;
 		}
+	}
+	
+	public function SwitchShowStashItems() //modFriendlyStash
+	{
+		if( _currentState == IMS_Stash )
+		{
+			_horseInv.syncWithPlayer = !_horseInv.syncWithPlayer;
+			_horseInv.playerTabIndex = currentlySelectedTab;
+			if( _horseInv.syncWithPlayer )
+				showNotification( GetLocStringByKeyExt( "fs_synchronized_inv_mode" ) );
+			else
+				showNotification( GetLocStringByKeyExt( "fs_normal_inv_mode" ) );
+			UpdateHorseInventory();
+		}
+		else if( _currentState == IMS_Shop )
+		{
+			if( _playerInv.IsOwner() )
+			{
+				_playerInv.SwitchToHorse( true );
+				_disableStashContext = !GetFriendlyStashConfig().IsShopMenuAccessAllowed();
+				showNotification( GetLocStringByKeyExt( "fs_stash_inv_mode" ) );
+			}
+			else
+			{
+				_playerInv.SwitchToOwner( false );
+				_disableStashContext = false;
+				showNotification( GetLocStringByKeyExt( "fs_normal_inv_mode" ) );
+			}
+			PopulateTabData(InventoryMenuTab_Weapons);
+			PopulateTabData(InventoryMenuTab_Potions);
+			PopulateTabData(InventoryMenuTab_Ingredients);
+			PopulateTabData(InventoryMenuTab_QuestItems);
+			PopulateTabData(InventoryMenuTab_Default);
+			PopulateTabData(InventoryMenuTab_Books);
+			m_fxSetCurrentModule.InvokeSelfOneArg(FlashArgInt(0));
+		}
+		if (m_currentContext)
+		{
+			m_currentContext.UpdateContext();
+		}
+	}
+	
+	public function ShowRoachStatsPopup() //modFriendlyStash
+	{
+		var messageText : string;
+		var horseManager : W3HorseManager = GetWitcherPlayer().GetHorseManager();
+		var curWeight, maxWeight : int;
+		
+		curWeight = CeilF( horseManager.GetEncumbrance() );
+		maxWeight = CeilF( horseManager.GetMaxEncumbrance() );
+		messageText = GetLocStringByKeyExt( "attribute_name_weight" ) + ": " + curWeight + " / " + maxWeight;
+		if( horseManager.IsOverencumbered() )
+		{
+			messageText += "<br>" + GetLocStringByKeyExt( "fs_horse_overenc" );
+			messageText += "<br>" + GetLocStringByKeyExt( "fs_horse_no_gallop" );
+			messageText += "<br>" + GetLocStringByKeyExt( "fs_horse_no_call" );
+		}
+	
+		ShowBookPopup( GetLocStringByKeyExt( "fs_show_horse_enc" ), messageText, GetInvalidUniqueId(), true );
+	}
+	
+	var RoachWasOverencumbered : bool; //modFriendlyStash
+	
+	function UpdateRoachEncumbrance() //modFriendlyStash
+	{
+		var messageText : string;
+		var horseManager : W3HorseManager = GetWitcherPlayer().GetHorseManager();
+		var curWeight, maxWeight : int;
+		
+		horseManager.UpdateHorseEncumbrance();
+		
+		curWeight = CeilF( horseManager.GetEncumbrance() );
+		maxWeight = CeilF( horseManager.GetMaxEncumbrance() );
+		
+		if( RoachWasOverencumbered )
+		{
+			if( !horseManager.IsOverencumbered() )
+				messageText = GetLocStringByKeyExt( "fs_horse_good" ) + " (" + GetLocStringByKeyExt( "attribute_name_weight" ) + ": " + curWeight + " / " + maxWeight + ")";
+		}
+		else
+		{
+			if( horseManager.IsOverencumbered() )
+				messageText = GetLocStringByKeyExt( "fs_horse_overenc" ) + " (" + GetLocStringByKeyExt( "attribute_name_weight" ) + ": " + curWeight + " / " + maxWeight + ")";
+		}
+		
+		if( messageText != "" )
+			showNotification( messageText );
+		
+		RoachWasOverencumbered = horseManager.IsOverencumbered();
 	}
 	
 	event  OnConsumeItem( item : SItemUniqueId ) 
@@ -4044,6 +4206,14 @@ class CR4InventoryMenu extends CR4MenuBase
 	
 	event  OnMoveToStash( item : SItemUniqueId )
 	{
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
+		
 		MoveToStash( item );
 	}
 	
@@ -4098,6 +4268,14 @@ class CR4InventoryMenu extends CR4MenuBase
 	
 	event  OnTakeFromStash(item : SItemUniqueId)
 	{
+		//modFriendlyStash
+		if( _disableStashContext )
+		{
+			showNotification( GetLocStringByKeyExt( "menu_cannot_perform_action_now" ) );
+			OnPlaySoundEvent( "gui_global_denied" );
+			return false;
+		}
+		
 		TakeItemFromStash(item);
 	}
 	

@@ -216,6 +216,8 @@ class W3HorseManager extends CPeristentEntity
 
 		Debug_TraceInventories( "ApplyHorseUpdateOnSpawn ] AFTER" );
 				
+		UpdateHorseEncumbrance(); //modFriendlyStash
+		
 		return true;
 	}
 	
@@ -421,6 +423,74 @@ class W3HorseManager extends CPeristentEntity
 		
 		return unequippedItem;
 	}
+	
+	//modFriendlyStash begin
+	public function UpdateHorseEncumbrance()
+	{
+		if( thePlayer.GetIsHorseMounted() )
+		{
+			if( IsOverencumbered() )
+			{
+				if( !GetWitcherPlayer().HasBuff( EET_OverEncumbered ) && FactsQuerySum( "DEBUG_EncumbranceBoy" ) == 0 )
+				{
+					GetWitcherPlayer().AddEffectDefault( EET_OverEncumbered, NULL, "OverEncumbered" );
+				}
+			}
+		}
+		else
+		{
+			if( IsOverencumbered() )
+			{
+				thePlayer.BlockAction( EIAB_CallHorse, 'OverEncumbered', true );
+			}
+			else
+			{
+				thePlayer.UnblockAction( EIAB_CallHorse, 'OverEncumbered' );
+			}
+		}
+	}
+	
+	public function OnMountHorse()
+	{
+		GetWitcherPlayer().UpdateEncumbrance();
+	}
+	
+	public function OnDismountHorse()
+	{
+		GetWitcherPlayer().UpdateEncumbrance();
+	}
+	
+	public function GetEncumbrance() : float
+	{
+		var i: int;
+		var encumbrance : float;
+		var items : array<SItemUniqueId>;
+		var inve : CInventoryComponent;
+		
+		if( !GetFriendlyStashConfig().bagsRoach )
+			return 0;
+		
+		inv.GetAllItems( items );
+
+		for( i = 0; i < items.Size(); i += 1 )
+		{
+			if( !IsItemEquipped( items[i] ) )
+				encumbrance += inv.GetItemEncumbrance( items[i] );
+		}
+
+		return encumbrance;
+	}
+	
+	public function GetMaxEncumbrance() : float
+	{
+		return GetFriendlyStashConfig().baseWeightRoach + GetFriendlyStashConfig().weightMultRoach * CalculateAttributeValue( GetHorseAttributeValue( 'encumbrance', false ) );
+	}
+	
+	public function IsOverencumbered() : bool
+	{
+		return ( GetFriendlyStashConfig().bagsRoach && CeilF( GetEncumbrance() ) > CeilF( GetMaxEncumbrance() ) );
+	}
+	//modFriendlyStash end
 	
 	public function AddAbility(abilityName : name)
 	{

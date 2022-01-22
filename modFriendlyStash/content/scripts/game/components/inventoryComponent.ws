@@ -5501,12 +5501,13 @@ import class CInventoryComponent extends CComponent
 		return GetInvalidUniqueId();
 	}
 	
-	public function RemoveUnusedMutagensCountById( itemId:SItemUniqueId, count:int ):void
+	//modFriendlyStash begin
+	public function RemoveUnusedMutagensCountById( itemId:SItemUniqueId, count:int ):bool
 	{
-		RemoveUnusedMutagensCount( thePlayer.inv.GetItemName( itemId ), count );
+		return RemoveUnusedMutagensCount( thePlayer.inv.GetItemName( itemId ), count );
 	}
 	
-	public function RemoveUnusedMutagensCount( itemName:name, count:int ):void
+	public function RemoveUnusedMutagensCount( itemName:name, count:int ):bool
 	{
 		var items  			: array<SItemUniqueId>;
 		var curItem 		: SItemUniqueId;
@@ -5536,13 +5537,15 @@ import class CInventoryComponent extends CComponent
 					
 					if (itemRemoved >= count)
 					{
-						return;
+						return true;
 					}
 				}
 				
 			}
 		}		
+		return false;
 	}
+	//modFriendlyStash end
 	
 }
 

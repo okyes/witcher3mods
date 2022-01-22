@@ -81,6 +81,7 @@ class CPlayerInput
 		theInput.RegisterListener( this, 'OnCommDeckEditor', 'PanelGwintDeckEditor' );
 		theInput.RegisterListener( this, 'OnCommMenuHub', 'HubMenu' );
 		theInput.RegisterListener( this, 'OnCommPanelInv', 'PanelInv' );
+		theInput.RegisterListener( this, 'OnCommPanelStash', 'PanelStash' ); //modSigns
 		theInput.RegisterListener( this, 'OnCommHoldFastMenu', 'HoldFastMenu' );
 		theInput.RegisterListener( this, 'OnCommPanelChar', 'PanelChar' );
 		theInput.RegisterListener( this, 'OnCommPanelMed', 'PanelMed' );
@@ -717,7 +718,7 @@ class CPlayerInput
 			thePlayer.DisplayActionDisallowedHudMessage(EIAB_OpenCharacterPanel);
 		}
 	}
-
+	
 	
 	event OnCommPanelInv( action : SInputAction )
 	{		
@@ -729,13 +730,18 @@ class CPlayerInput
 	
 	final function PushInventoryScreen()
 	{
+		var initDataObject : W3InventoryInitData; //modSigns
 		if ( theGame.IsBlackscreenOrFading() )
 		{
 			return;
 		}
 		if( IsActionAllowed(EIAB_OpenInventory) )		
 		{
-			theGame.RequestMenuWithBackground( 'InventoryMenu', 'CommonMenu' );
+			//theGame.RequestMenuWithBackground( 'InventoryMenu', 'CommonMenu' );
+			//modSigns
+			initDataObject = new W3InventoryInitData in theGame.GetGuiManager();
+			initDataObject.setDefaultState( 'CharacterInventory' );
+			theGame.RequestMenuWithBackground( 'InventoryMenu', 'CommonMenu', initDataObject );
 		}
 		else
 		{
@@ -743,6 +749,33 @@ class CPlayerInput
 		}
 	}
 	
+	
+	event OnCommPanelStash( action : SInputAction ) //modSigns
+	{		
+		if (IsReleased(action))
+		{
+			PushStashScreen();
+		}
+	}
+	
+	final function PushStashScreen() //modSigns
+	{
+		var initDataObject : W3InventoryInitData;
+		if ( theGame.IsBlackscreenOrFading() )
+		{
+			return;
+		}
+		if( IsActionAllowed(EIAB_OpenGlossary) )		
+		{
+			initDataObject = new W3InventoryInitData in theGame.GetGuiManager();
+			initDataObject.setDefaultState( 'StashInventory' );
+			theGame.RequestMenuWithBackground( 'InventoryMenu', 'CommonMenu', initDataObject );
+		}
+		else
+		{
+			thePlayer.DisplayActionDisallowedHudMessage(EIAB_OpenGlossary);
+		}
+	}
 	
 	event OnCommDeckEditor( action : SInputAction )
 	{

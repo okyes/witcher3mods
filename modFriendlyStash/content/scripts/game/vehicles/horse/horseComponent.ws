@@ -258,6 +258,10 @@ statemachine import class W3HorseComponent extends CVehicleComponent
 		if( riderActor == thePlayer )
 		{
 			thePlayer.SetIsHorseMounted( true );
+			//modFriendlyStash begin
+			if( thePlayer == GetWitcherPlayer() && IsPlayerHorse() )
+				GetWitcherPlayer().GetHorseManager().OnMountHorse();
+			//modFriendlyStash end
 			horseActor.CanPush( true );
 
 			movingAgent = horseActor.GetMovingAgentComponent();
@@ -308,6 +312,10 @@ statemachine import class W3HorseComponent extends CVehicleComponent
 		{
 			thePlayer._SetHorseCurrentlyMounted( NULL );
 			thePlayer.SetIsHorseMounted( false );
+			//modFriendlyStash begin
+			if( thePlayer == GetWitcherPlayer() && IsPlayerHorse() )
+				GetWitcherPlayer().GetHorseManager().OnDismountHorse();
+			//modFriendlyStash end
 			
 			movingAgent = horseActor.GetMovingAgentComponent();
 			if ( movingAgent )

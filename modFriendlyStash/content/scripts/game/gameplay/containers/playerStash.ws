@@ -9,6 +9,9 @@ class W3Stash extends CInteractiveEntity
 
 	event OnInteraction( actionName : string, activator : CEntity )
 	{
+		if( GetFriendlyStashConfig().disableChests ) //modFriendlyStash
+			return false;
+	
 		if(activator != thePlayer)
 			return false;
 			

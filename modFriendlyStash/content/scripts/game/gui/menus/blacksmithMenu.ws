@@ -18,6 +18,8 @@ class CR4BlacksmithMenu extends CR4MenuBase
 	private var _tooltipDataProvider	: W3TooltipComponent;
 	
 	protected var _inv 		      : CInventoryComponent;
+	protected var _playerInv      : CInventoryComponent; //modFriendlyStash
+	protected var _horseInv	      : CInventoryComponent; //modFriendlyStash
 	protected var _fixerNpc 	  : CNewNPC;
 	protected var _fixerInventory : CInventoryComponent;
 	
@@ -42,6 +44,8 @@ class CR4BlacksmithMenu extends CR4MenuBase
 	private var m_sectionsList			: CScriptedFlashArray;
 	
 	private var m_ingrForMissingDecoctions : array<name>;
+	
+	private var m_blacksmithContext		: W3BlacksmithContext; //modFriendlyStash
 	
 	event  OnConfigUI()
 	{	
@@ -88,6 +92,8 @@ class CR4BlacksmithMenu extends CR4MenuBase
 			_fixerInventory = l_fixerEntity.GetInventory();
 		}
 		
+		_playerInv = thePlayer.GetInventory(); //modFriendlyStash
+		_horseInv = GetWitcherPlayer().GetHorseManager().GetInventoryComponent(); //modFriendlyStash
 		_inv = thePlayer.GetInventory();
 		m_flashModule = GetMenuFlash();
 		m_fxConfirmAction = m_flashModule.GetMemberFlashFunction( "confirmAction" );
@@ -138,6 +144,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		}
 		
 		m_menuInited = true;
+		CreateBlacksmithContext(); //modFriendlyStash
 		ApplyMenuState(m_menuState);
 		
 		
@@ -165,6 +172,45 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		}
 		
 		m_fxSetTooltipState.InvokeSelfTwoArgs( FlashArgBool( thePlayer.upscaledTooltipState ), FlashArgBool( true ) );
+	}
+	
+	protected function CreateBlacksmithContext() //modFriendlyStash
+	{
+		if( m_blacksmithContext )
+			delete m_blacksmithContext;
+		if(GetFriendlyStashConfig().IsCraftingAccessAllowed())
+		{
+			m_blacksmithContext = new W3BlacksmithContext in this;
+			m_blacksmithContext.SetBlacksmithMenuRef( this );
+			ActivateContext( m_blacksmithContext );
+		}
+	}
+	
+	public function SwitchShowStashItems() //modFriendlyStash
+	{
+		if( _inv == _playerInv )
+		{
+			_inv = _horseInv;
+			showNotification( GetLocStringByKeyExt( "fs_stash_inv_mode" ) );
+		}
+		else
+		{
+			_inv = _playerInv;
+			showNotification( GetLocStringByKeyExt( "fs_normal_inv_mode" ) );
+		}
+		_curInv.SetCurrentInventory( _inv );
+		_tooltipDataProvider.setCurrentInventory( _inv );
+		UpdateRepairAllInputFeedback( m_menuState );
+		UpdateData();
+	}
+	
+	public function ResetShowStashItems() //modFriendlyStash
+	{
+		showNotification( GetLocStringByKeyExt( "fs_normal_inv_mode" ) );
+		_inv = _playerInv;
+		_curInv.SetCurrentInventory( _inv );
+		_tooltipDataProvider.setCurrentInventory( _inv );
+		//UpdateData();
 	}
 	
 	public  function SetMenuState(newState : name) : void
@@ -210,6 +256,11 @@ class CR4BlacksmithMenu extends CR4MenuBase
 	
 	protected function ApplyMenuState( newState : name ) : void
 	{
+		//modFriendlyStash begin
+		if(GetFriendlyStashConfig().IsCraftingAccessAllowed())
+			ResetShowStashItems();
+		//modFriendlyStash end
+	
 		if (m_standaloneMode)
 		{
 			
@@ -255,6 +306,10 @@ class CR4BlacksmithMenu extends CR4MenuBase
 			SetSectionsDataList( newState );
 		}
 		
+		//modFriendlyStash begin
+		if(m_blacksmithContext)
+			m_blacksmithContext.UpdateContext();
+		//modFriendlyStash end
 		UpdateRepairAllInputFeedback( newState );
 		UpdateData();
 	}
@@ -398,7 +453,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 				price = 0;
 			}
 			
-			if( _inv.GetMoney() < price ) 
+			if( _playerInv.GetMoney() < price ) //modFriendlyStash
 			{
 				showNotification( GetLocStringByKeyExt( "panel_shop_notification_not_enough_money" ) );
 				HandleActionConfirmation( false );
@@ -431,7 +486,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		var invItem 			: SInventoryItem;
 		var playerMoney	 		: int;
 		
-		playerMoney = _inv.GetMoney();
+		playerMoney = _playerInv.GetMoney(); //modFriendlyStash
 		
 		invItem = _inv.GetItem( itemId );
 		
@@ -508,7 +563,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 	{
 		var playerMoney	 		: int;
 		
-		playerMoney = _inv.GetMoney();
+		playerMoney = _playerInv.GetMoney(); //modFriendlyStash
 		
 		if ( playerMoney >= price )
 		{
@@ -562,7 +617,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		}
 		
 		_fixerInventory.AddMoney(price);
-		_inv.RemoveMoney(price);
+		_playerInv.RemoveMoney(price); //modFriendlyStash
 		_inv.RemoveAllItemEnhancements(item);
 		
 		if (_inv.GetItemQuantity(item) > 1)
@@ -596,11 +651,18 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		var itemsToUpdate		: array <SItemUniqueId>;
 		var curPart				: SItemUniqueId;
 		
+		var dontMarkAsNew		: bool; //modFriendlyStash
+		
 		if( m_lastConfirmedDisassembleQuantity < 1 )
 		{
 			OnPlaySoundEvent( "gui_global_denied" );
 			return 0;
 		}
+		
+		if( _inv == _playerInv ) //modFriendlyStash
+			dontMarkAsNew = false;
+		else
+			dontMarkAsNew = true;
 		
 		itemsListText = "<font color =\"#404040\">" + GetLocStringByKeyExt( "panel_blacksmith_items_removed" ) + ": </font>";
 		itemsListText += "<br/>" + ( GetLocStringByKeyExt( _inv.GetItemLocalizedNameByUniqueID( item ) ) + " x" + m_lastConfirmedDisassembleQuantity );
@@ -648,16 +710,17 @@ class CR4BlacksmithMenu extends CR4MenuBase
 			
 			itemsListText += "<br/>" + "<font color =\"#404040\">" + GetLocStringByKeyExt("panel_blacksmith_items_added") + ": </font>";
 			
-			GetWitcherPlayer().StartInvUpdateTransaction();
+			if( _inv == _playerInv ) //modFriendlyStash
+				GetWitcherPlayer().StartInvUpdateTransaction();
 			
 			_fixerInventory.AddMoney(price * m_lastConfirmedDisassembleQuantity);
-			_inv.RemoveMoney(price * m_lastConfirmedDisassembleQuantity);
+			_playerInv.RemoveMoney(price * m_lastConfirmedDisassembleQuantity); //modFriendlyStash
 			if ( _inv.GetItemEnhancementCount(item) > 0 )
 			{
 				_inv.GetItemEnhancementItems(item, runesList);
 				for (idx = 0; idx <  runesList.Size(); idx+=1)
 				{
-					_inv.AddAnItem( runesList[idx] );
+					_inv.AddAnItem( runesList[idx], , , dontMarkAsNew ); //modFriendlyStash
 					itemsListText += "<br/>" + (GetLocStringByKeyExt(_inv.GetItemLocalizedNameByName(runesList[idx])) + " x1");
 				}		
 			}
@@ -725,7 +788,8 @@ class CR4BlacksmithMenu extends CR4MenuBase
 			UpdateItemsList(itemsToUpdate);
 		}
 		
-		GetWitcherPlayer().FinishInvUpdateTransaction();
+		if( _inv == _playerInv ) //modFriendlyStash
+			GetWitcherPlayer().FinishInvUpdateTransaction();
 		
 		UpdatePlayerMoney();
 		UpdateMerchantData();
@@ -743,7 +807,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 	{
 		_repairInv.RepairItem( item, 1 );
 		_fixerInventory.AddMoney(price);
-		_inv.RemoveMoney(price);
+		_playerInv.RemoveMoney(price); //modFriendlyStash
 		
 		if (_inv.GetItemQuantity(item) > 1)
 		{
@@ -768,7 +832,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		_addSocketInv.AddSocket( item );
 		
 		_fixerInventory.AddMoney(price);
-		_inv.RemoveMoney(price);
+		_playerInv.RemoveMoney(price); //modFriendlyStash
 		
 		UpdateItem(item);
 		
@@ -784,7 +848,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		
 		totalRepairCost = _repairInv.GetTotalRepairCost();
 		
-		if (_inv.GetMoney() < totalRepairCost) 
+		if (_playerInv.GetMoney() < totalRepairCost) //modFriendlyStash
 		{
 			showNotification( GetLocStringByKeyExt( "panel_shop_notification_not_enough_money" ) );
 			HandleActionConfirmation(false);
@@ -814,7 +878,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		_repairInv.RepairAllItems(1);
 		
 		_fixerInventory.AddMoney(totalRepairCost);
-		_inv.RemoveMoney(totalRepairCost);
+		_playerInv.RemoveMoney(totalRepairCost); //modFriendlyStash
 		UpdatePlayerMoney();
 		UpdateMerchantData();
 		
@@ -1021,6 +1085,11 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		if (repairAllPopupData)
 		{
 			delete repairAllPopupData;
+		}
+		if( m_blacksmithContext ) //modFriendlyStash
+		{
+			m_blacksmithContext.Deactivate();
+			delete m_blacksmithContext;
 		}
 		
 		theGame.GetGuiManager().SetLastOpenedCommonMenuName( GetMenuName() );

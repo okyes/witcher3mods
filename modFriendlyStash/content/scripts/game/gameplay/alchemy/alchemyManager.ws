@@ -12,6 +12,11 @@ class W3AlchemyManager
 	private var recipes : array<SAlchemyRecipe>;									
 	private var isPlayerMounted  : bool;
 	private var isPlayerInCombat : bool;
+	//modFriendlyStash begin
+	//Not actually used by Preparations (bStashAccess == false), but needed for Friendly Stash compatibility
+	//Used by Friendly Stash to allow using stash items for alchemy
+	private var bStashAccess : bool; default bStashAccess = false;
+	//modFriendlyStash end
 	
 	
 	public function Init(optional alchemyRecipes : array<name>)
@@ -29,6 +34,15 @@ class W3AlchemyManager
 		isPlayerInCombat = thePlayer.IsInCombat();
 	}
 	
+	
+	//modFriendlyStash begin
+	//Not actually used by Preparations (bStashAccess == false), but needed for Friendly Stash compatibility
+	//Used by Friendly Stash to allow using stash items for alchemy
+	public function SetStashAccess( val: bool )
+	{
+		bStashAccess = val;
+	}
+	//modFriendlyStash end
 	
 	public function GetRecipe(recipeName : name, out ret : SAlchemyRecipe) : bool
 	{
@@ -193,11 +207,11 @@ class W3AlchemyManager
 			
 			if (dm.ItemHasTag( itemName, 'MutagenIngredient' ))
 			{
-				cnt = thePlayer.inv.GetUnusedMutagensCount(itemName);
+				cnt = GetWitcherPlayer().GetMutagenQuantityByNameForCrafting(itemName, bStashAccess); //modFriendlyStash
 			}
 			else
 			{
-				cnt = thePlayer.inv.GetItemQuantityByName(itemName);
+				cnt = GetWitcherPlayer().GetItemQuantityByNameForCrafting(itemName, bStashAccess); //modFriendlyStash
 			}
 			
 			if(cnt < recipe.requiredIngredients[i].quantity)
@@ -267,7 +281,7 @@ class W3AlchemyManager
 			
 			if( dm.ItemHasTag( itemName, 'MutagenIngredient' ) )
 			{
-				thePlayer.inv.RemoveUnusedMutagensCount( itemName, recipe.requiredIngredients[i].quantity);
+				GetWitcherPlayer().RemoveMutagenByNameForCrafting(itemName, recipe.requiredIngredients[i].quantity, bStashAccess); //modFriendlyStash
 			}
 			else if( dm.IsItemAlchemyItem( itemName ))
 			{
@@ -294,7 +308,7 @@ class W3AlchemyManager
 			else
 			{
 				
-				thePlayer.inv.RemoveItemByName(itemName, recipe.requiredIngredients[i].quantity);
+				GetWitcherPlayer().RemoveItemByNameForCrafting(itemName, recipe.requiredIngredients[i].quantity, bStashAccess); //modFriendlyStash
 			}
 		}
 		

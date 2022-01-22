@@ -113,7 +113,7 @@ class W3CraftingManager
 		
 		for(i=0; i<schem.ingredients.Size(); i+=1)
 		{
-			cnt = thePlayer.inv.GetItemQuantityByName(schem.ingredients[i].itemName);							
+			cnt = GetWitcherPlayer().GetItemQuantityByNameForCrafting(schem.ingredients[i].itemName, GetFriendlyStashConfig().IsCraftingAccessAllowed()); //modFriendlyStash
 			if(cnt < schem.ingredients[i].quantity)
 				return ECE_TooFewIngredients;
 		}
@@ -200,7 +200,7 @@ class W3CraftingManager
 			ArrayOfNamesAppend(upgrades, temp);
 			temp.Clear();
 			
-			thePlayer.inv.RemoveItemByName(schem.ingredients[i].itemName, schem.ingredients[i].quantity);
+			GetWitcherPlayer().RemoveItemByNameForCrafting(schem.ingredients[i].itemName, schem.ingredients[i].quantity, GetFriendlyStashConfig().IsCraftingAccessAllowed()); //modFriendlyStash
 		}
 		
 		

@@ -32,6 +32,11 @@ class W3TooltipComponent
 		m_itemInv = invComponent;
 	}
 	
+	public function GetCurrentInventory() : CInventoryComponent //modFriendlyStash
+	{
+		return m_itemInv;
+	}
+	
 	public function setShopInventory( invComponent : CInventoryComponent ):void
 	{
 		m_shopInv = invComponent;
@@ -570,10 +575,10 @@ class W3TooltipComponent
 			}
 			else
 			{
-				invItem = m_playerInv.GetItem( item );
+				invItem = itemInvComponent.GetItem( item ); //modFriendlyStash
 				invItemPrice = m_shopInv.GetInventoryItemPriceModified( invItem, true );
 				
-				if ( invItemPrice < 0 || m_playerInv.ItemHasTag(item, 'Quest'))
+				if ( invItemPrice < 0 || itemInvComponent.ItemHasTag(item, 'Quest')) //modFriendlyStash
 				{
 					tooltipData.SetMemberFlashString("WarningMessage", GetLocStringByKeyExt("panel_shop_not_for_sale"));
 					addGFxItemStat( propsList, "notforsale", " ");
@@ -582,9 +587,9 @@ class W3TooltipComponent
 				{
 					invItemPriceString = invItemPrice;
 					
-					if (m_playerInv.GetItemQuantity(item) > 1)
+					if (itemInvComponent.GetItemQuantity(item) > 1) //modFriendlyStash
 					{
-						invItemPriceString += " (" + (m_playerInv.GetItemQuantity(item) * invItemPrice) + ")";
+						invItemPriceString += " (" + (itemInvComponent.GetItemQuantity(item) * invItemPrice) + ")"; //modFriendlyStash
 					}
 					addGFxItemStat( propsList, "price", "<font color ='#FFFFFF'>" + invItemPriceString + "</font>", "panel_inventory_item_price" );
 				}

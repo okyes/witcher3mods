@@ -62,6 +62,10 @@ statemachine class W3PlayerWitcher extends CR4Player
 	default bDispalyHeavyAttackIndicator = false; 
 	default bDisplayHeavyAttackFirstLevelTimer = true; 
 	
+	//modFriendlyStash begin
+	public				var fStashConfig				: CModFriendlyStashConfig;
+	//modFriendlyStash end
+	
 	
 	
 		default explorationInputContext = 'Exploration';
@@ -318,6 +322,11 @@ statemachine class W3PlayerWitcher extends CR4Player
 		{
 			FixEquippedMutagens();
 		}
+		
+		//modFriendlyStash begin
+		fStashConfig = new CModFriendlyStashConfig in this;
+		fStashConfig.Init();
+		//modFriendlyStash end
 		
 		if ( FactsQuerySum("NewGamePlus") > 0 )
 		{
@@ -5949,13 +5958,113 @@ statemachine class W3PlayerWitcher extends CR4Player
 		return false;
 	}
 	
+	//modFriendlyStash begin
+	//Not actually used by Preparations (allowStash == false), but needed for modFriendlyStash compatibility
+	//Used by modFriendlyStash to allow using stash items for crafting and alchemy
+	public function GetItemQuantityByNameForCrafting(itemName : name, allowStash : bool) : int
+	{
+		if( allowStash )
+		{
+			return inv.GetItemQuantityByName(itemName) + GetHorseManager().GetInventoryComponent().GetItemQuantityByName(itemName);
+		}
+		return inv.GetItemQuantityByName(itemName);
+	}
+	
+	public function GetMutagenQuantityByNameForCrafting(itemName : name, allowStash : bool) : int
+	{
+		if( allowStash )
+		{
+			return inv.GetUnusedMutagensCount(itemName) + GetHorseManager().GetInventoryComponent().GetItemQuantityByName(itemName);
+		}
+		return inv.GetUnusedMutagensCount(itemName);
+	}
+	
+	public function RemoveItemByNameForCrafting(itemName : name, quantity : int, allowStash : bool) : bool
+	{
+		var playerQuantity, horseQuantity, quantityToRemove, removedQuantity : int;
+		if( allowStash )
+		{
+			quantityToRemove = quantity;
+			playerQuantity = inv.GetItemQuantityByName(itemName);
+			if( playerQuantity < quantityToRemove )
+			{
+				quantityToRemove = playerQuantity;
+			}
+			if( quantityToRemove > 0 && inv.RemoveItemByName(itemName, quantityToRemove) )
+			{
+				removedQuantity = quantityToRemove;
+			}
+			quantityToRemove = quantity - removedQuantity;
+			if( quantityToRemove > 0 )
+			{
+				horseQuantity = GetHorseManager().GetInventoryComponent().GetItemQuantityByName(itemName);
+				if( horseQuantity < quantityToRemove )
+				{
+					quantityToRemove = horseQuantity;
+				}
+				if( quantityToRemove > 0 && GetHorseManager().GetInventoryComponent().RemoveItemByName(itemName, quantityToRemove) )
+				{
+					removedQuantity += quantityToRemove;
+				}
+			}
+			if( removedQuantity == quantity )
+			{
+				return true;
+			}
+			return false;
+		}
+		return inv.RemoveItemByName(itemName, quantity);
+	}
+	
+	public function RemoveMutagenByNameForCrafting(itemName : name, quantity : int, allowStash : bool) : bool
+	{
+		var playerQuantity, horseQuantity, quantityToRemove, removedQuantity : int;
+		if( allowStash )
+		{
+			quantityToRemove = quantity;
+			playerQuantity = inv.GetUnusedMutagensCount(itemName);
+			if( playerQuantity < quantityToRemove )
+			{
+				quantityToRemove = playerQuantity;
+			}
+			if( quantityToRemove > 0 && inv.RemoveUnusedMutagensCount(itemName, quantityToRemove) )
+			{
+				removedQuantity = quantityToRemove;
+			}
+			quantityToRemove = quantity - removedQuantity;
+			if( quantityToRemove > 0 )
+			{
+				horseQuantity = GetHorseManager().GetInventoryComponent().GetItemQuantityByName(itemName);
+				if( horseQuantity < quantityToRemove )
+				{
+					quantityToRemove = horseQuantity;
+				}
+				if( quantityToRemove > 0 && GetHorseManager().GetInventoryComponent().RemoveItemByName(itemName, quantityToRemove) )
+				{
+					removedQuantity += quantityToRemove;
+				}
+			}
+			if( removedQuantity == quantity )
+			{
+				return true;
+			}
+			return false;
+		}
+		return inv.RemoveUnusedMutagensCount(itemName, quantity);
+	}
+	//modFriendlyStash end
+	
 	public function GetMaxRunEncumbrance(out usesHorseBonus : bool) : float
 	{
 		var value : float;
 		
-		value = CalculateAttributeValue(GetHorseManager().GetHorseAttributeValue('encumbrance', false));
+		//modFriendlyStash begin
+		if( fStashConfig.bagsRoach == false )
+			value = GetHorseManager().GetMaxEncumbrance();
 		usesHorseBonus = (value > 0);
-		value += CalculateAttributeValue( GetAttributeValue('encumbrance') );
+		value += CalculateAttributeValue( GetAttributeValue('encumbrance') - GetAbilityAttributeValue('ConGeralt', 'encumbrance') );
+		value += fStashConfig.baseWeightGeralt;
+		//modFriendlyStash end
 		
 		return value;
 	}
@@ -6020,6 +6129,8 @@ statemachine class W3PlayerWitcher extends CR4Player
 		{
 			RemoveAllBuffsOfType(EET_OverEncumbered);
 		}
+		
+		GetWitcherPlayer().GetHorseManager().UpdateHorseEncumbrance(); //modFriendlyStash
 	}
 	
 	public final function GetSkillGroupIDFromIndex(idx : int) : int
