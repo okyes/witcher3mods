@@ -4211,33 +4211,30 @@ class CR4InventoryMenu extends CR4MenuBase
 	
 	public function TakeItemFromStash(item : SItemUniqueId) : void
 	{
+		var itemQuant : int; // modFastStashMenu
 		var newItemId : SItemUniqueId;
 		var filterType : EInventoryFilterType;
-		//---=== modFriendlyHUD ===---
-		var quantity : int;
-		//---=== modFriendlyHUD ===---
 		
 		if (GetWitcherPlayer().GetHorseManager().GetInventoryComponent().IsIdValid(item))
 		{
-			//---=== modFriendlyHUD ===---
-			quantity = GetWitcherPlayer().GetHorseManager().GetInventoryComponent().GetItemQuantity(item);
-			
-			if(quantity < 2)
+			// ++modFastStashMenu
+			itemQuant = GetWitcherPlayer().GetHorseManager().GetInventoryComponent().GetItemQuantity(item);
+
+			if (itemQuant > 1)
 			{
-				newItemId = GetWitcherPlayer().GetHorseManager().MoveItemFromHorse(item, quantity);
-				UpdateHorseInventory();
-				
+				OpenQuantityPopup( item, QTF_TakeFromStash, itemQuant );
+			}
+			else
+			{
+				newItemId = GetWitcherPlayer().GetHorseManager().MoveItemFromHorse(item, itemQuant);
+				ShopRemoveItem(item);
+			// --modFastStashMenu
 				filterType = _playerInv.GetFilterTypeByItem(newItemId);
 				_playerInv.SetFilterType( filterType );
 				m_fxInventoryUpdateFilter.InvokeSelfOneArg( FlashArgUInt( getTabFromFilter(filterType) ));
 				InventoryUpdateItem( newItemId );
 				UpdateEncumbranceInfo();
-			}
-			else
-			{
-				OpenQuantityPopup(item, QTF_Take, quantity);
-			}
-			//---=== modFriendlyHUD ===---
+			} // modFastStashMenu
 		}
 	}
 	
