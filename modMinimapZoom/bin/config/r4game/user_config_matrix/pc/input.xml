@@ -15,7 +15,10 @@
 			<Var builder="Input" id="SprintGallop"				displayName="sprint_gallop"						displayType="INPUTPC" actions="Sprint;Gallop"/>
 			<Var builder="Input" id="Dismount"					displayName="dismount"							displayType="INPUTPC" actions="BoatDismount;HorseDismount"/>
 			-->		
-					
+
+			<Var builder="Input" id="MMZ_Decrement" displayName="Minimap zoom out" displayType="INPUTPC" actions="MMZ_Decrement" />
+			<Var builder="Input" id="MMZ_Increment" displayName="Minimap zoom in" displayType="INPUTPC" actions="MMZ_Increment" />
+
 			<!-- [BASE_CharacterMovement] -->				
 			<Var builder="Input" id="MoveFwd"					displayName="move_forward"						displayType="INPUTPC" actions="MoveForward;MovementDoubleTapW;ChangeChoiceUp"/>
 			<Var builder="Input" id="MoveBck"					displayName="move_back"							displayType="INPUTPC" actions="MoveBackward;MovementDoubleTapS;ChangeChoiceDown;GI_Decelerate"/>
