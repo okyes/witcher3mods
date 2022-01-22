@@ -16,6 +16,11 @@
 			<Var builder="Input" id="Dismount"					displayName="dismount"							displayType="INPUTPC" actions="BoatDismount;HorseDismount"/>
 			-->		
 					
+			<!-- AutoLoot Begin -->
+			<Var builder="Input" id="AutoLootRadius" displayName="ahdal_keyRadius" displayType="INPUTPC" actions="AutoLootRadius"/>
+			<Var builder="Input" id="ToggleTrueAutoLoot" displayName="ahdal_keyTrue" displayType="INPUTPC" actions="ToggleTrueAutoLoot"/>
+			<!-- AutoLoot End -->
+			
 			<!-- [BASE_CharacterMovement] -->				
 			<Var builder="Input" id="MoveFwd"					displayName="move_forward"						displayType="INPUTPC" actions="MoveForward;MovementDoubleTapW;ChangeChoiceUp"/>
 			<Var builder="Input" id="MoveBck"					displayName="move_back"							displayType="INPUTPC" actions="MoveBackward;MovementDoubleTapS;ChangeChoiceDown;GI_Decelerate"/>
