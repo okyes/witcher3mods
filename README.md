@@ -7,7 +7,7 @@ branch | type of mod | upstream
 [ultimate-roach-improvement-for-friendly-stash][branch-5] | `content/scripts/*.ws` | [upstream][upstream-5] [upstream][upstream-5-2]
 [fast-stash-for-friendly-hud][branch-6] | `content/scripts/*.ws` `input.settings` | [upstream][upstream-6]
 [correct-sorting-for-sort-everything-and-more-quick-slots][branch-7] | `content/blob0.bundle` `content/metadata.store` | [upstream][upstream-7] [upstream][upstream-7-2]
-place-of-power-infinite-buff | `content/scripts/*.ws`
+[place-of-power-infinite-buff][branch-8] | `content/scripts/*.ws`
 
 [branch-1]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-autoloot-configurable-allinone
 [branch-2]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-minimap-zoom
@@ -16,6 +16,7 @@ place-of-power-infinite-buff | `content/scripts/*.ws`
 [branch-5]: https://github.com/galeksandrp/witcher3mods/tree/ultimate-roach-improvement-for-friendly-stash
 [branch-6]: https://github.com/galeksandrp/witcher3mods/tree/fast-stash-for-friendly-hud
 [branch-7]: https://github.com/galeksandrp/witcher3mods/tree/correct-sorting-for-sort-everything-and-more-quick-slots
+[branch-8]: https://github.com/galeksandrp/witcher3mods/tree/place-of-power-infinite-buff
 
 [upstream-1]: https://www.nexusmods.com/witcher3/mods/1996
 [upstream-2]: https://www.nexusmods.com/witcher3/mods/1723
