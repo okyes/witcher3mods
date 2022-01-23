@@ -16,6 +16,20 @@
 			<Var builder="Input" id="Dismount"					displayName="dismount"							displayType="INPUTPC" actions="BoatDismount;HorseDismount"/>
 			-->		
 					
+			<!-- [AMM] -->
+			<Var builder="Input" id="AMMHeadCape"	displayName="Head Gear/Cape Toggle"	displayType="INPUTPC" actions="AMMHeadCape"/>
+			<Var builder="Input" id="AMMToggle"	displayName="AMM On/Off"	displayType="INPUTPC" actions="AMMToggle"/>
+			<Var builder="Input" id="RefreshAP"	displayName="Refresh Appearance"	displayType="INPUTPC" actions="RefreshAP"/>
+			
+			<Var builder="Input" id="AMMFavsUp"	displayName="AMM Favourite Selection Up"	displayType="INPUTPC" actions="AMMFavsUp"/>
+			<Var builder="Input" id="AMMFavsDown"	displayName="AMM Favourite Selection Down"	displayType="INPUTPC" actions="AMMFavsDown"/>
+			<Var builder="Input" id="AMMSaveFavourite"	displayName="AMM Save Favourite"	displayType="INPUTPC" actions="AMMSaveFavourite"/>
+			<Var builder="Input" id="AMMLoadFavourite"	displayName="AMM Load Favourite"	displayType="INPUTPC" actions="AMMLoadFavourite"/>
+
+			<Var builder="Input" id="AMMSliderUp"	displayName="AMM Slider Up"	displayType="INPUTPC" actions="AMMSliderUp"/>
+			<Var builder="Input" id="AMMSliderDown"	displayName="AMM Slider Down"	displayType="INPUTPC" actions="AMMSliderDown"/>
+			<!-- [AMM] -->
+			
 			<!-- [BASE_CharacterMovement] -->				
 			<Var builder="Input" id="MoveFwd"					displayName="move_forward"						displayType="INPUTPC" actions="MoveForward;MovementDoubleTapW;ChangeChoiceUp"/>
 			<Var builder="Input" id="MoveBck"					displayName="move_back"							displayType="INPUTPC" actions="MoveBackward;MovementDoubleTapS;ChangeChoiceDown;GI_Decelerate"/>
