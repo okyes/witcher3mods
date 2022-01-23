@@ -3,7 +3,7 @@ branch | type of mod | upstream
 [input-xml-for-autoloot-configurable-allinone][branch-1] | `bin/input.xml` `input.settings` | [upstream][upstream-1]
 [input-xml-for-minimap-zoom][branch-2] | `bin/input.xml` `input.settings` | [upstream][upstream-2]
 [user-settings-for-sort-everything][branch-3] | `user.settings` | [upstream][upstream-3]
-[correct-sorting-for-more-quick-slots][branch-4] | `content/blob0.bundle` `content/metadata.store` | [upstream][upstream-4] [upstream 2][upstream-4-2]
+[correct-sorting-for-more-quick-slots][branch-4] | `content/blob0.bundle` `content/metadata.store` | [upstream][upstream-4] [upstream][upstream-4-2]
 [ultimate-roach-improvement-for-friendly-stash][branch-5] | `content/scripts/*.ws` | [upstream][upstream-5] [upstream][upstream-5-2]
 [fast-stash-for-friendly-hud][branch-6] | `content/scripts/*.ws` `input.settings` | [upstream][upstream-6]
 [correct-sorting-for-sort-everything-and-more-quick-slots][branch-7] | `content/blob0.bundle` `content/metadata.store` | [upstream][upstream-7] [upstream][upstream-7-2]
