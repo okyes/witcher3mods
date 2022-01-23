@@ -9,6 +9,7 @@ branch | type of mod | upstream
 [correct-sorting-for-sort-everything-and-more-quick-slots][branch-7] | `content/blob0.bundle` `content/metadata.store` | [upstream][upstream-7] [upstream][upstream-7-2]
 [place-of-power-infinite-buff][branch-8] | `content/scripts/*.ws`
 [armor-weapon-infinite-buff][branch-9] | `content/blob0.bundle` `content/metadata.store`
+[unlimited-custom-markers][branch-10] | `bin` | [upstream][upstream-10]
 
 [branch-1]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-autoloot-configurable-allinone
 [branch-2]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-minimap-zoom
@@ -19,6 +20,7 @@ branch | type of mod | upstream
 [branch-7]: https://github.com/galeksandrp/witcher3mods/tree/correct-sorting-for-sort-everything-and-more-quick-slots
 [branch-8]: https://github.com/galeksandrp/witcher3mods/tree/place-of-power-infinite-buff
 [branch-9]: https://github.com/galeksandrp/witcher3mods/tree/armor-weapon-infinite-buff
+[branch-10]: https://github.com/galeksandrp/witcher3mods/tree/unlimited-custom-markers
 
 [upstream-1]: https://www.nexusmods.com/witcher3/mods/1996
 [upstream-2]: https://www.nexusmods.com/witcher3/mods/1723
@@ -30,3 +32,4 @@ branch | type of mod | upstream
 [upstream-6]: https://www.nexusmods.com/witcher3/mods/4849
 [upstream-7]: https://www.nexusmods.com/witcher3/mods/1221
 [upstream-7-2]: https://www.nexusmods.com/witcher3/mods/1460
+[upstream-10]: https://forums.nexusmods.com/index.php?/topic/4575465-mod-requesthelp-more-custom-map-markers/
