@@ -32,7 +32,7 @@ statemachine class CMajorPlaceOfPowerEntity extends CInteractiveEntity
 	default fxOnSuccess = 'use';
 	
 	default channelingTime = 2.5;
-	default buffDuration = 1800.0; 
+	default buffDuration = 259200.0; 
 	default skillPointGranted = false;
 	default isRecharging = false;
 	default autoState = 'PlaceOfPower_Idle';
