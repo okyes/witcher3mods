@@ -6,6 +6,7 @@ branch | type of mod | upstream
 [input-xml-for-minimap-zoom][branch-2] | `bin/input.xml` `input.settings` | [upstream][upstream-2]
 [user-settings-for-sort-everything][branch-3] | `user.settings` | [upstream][upstream-3]
 [unlimited-custom-markers][branch-10] | `bin` | [upstream][upstream-10]
+[input-xml-for-appearances-menu-mod][branch-12] | `bin/input.xml` `input.settings` | [upstream][upstream-12]
 
 Merge mods
 
@@ -35,6 +36,7 @@ branch | type of mod | upstream
 [branch-9]: https://github.com/galeksandrp/witcher3mods/tree/armor-weapon-infinite-buff
 [branch-10]: https://github.com/galeksandrp/witcher3mods/tree/unlimited-custom-markers
 [branch-11]: https://github.com/galeksandrp/witcher3mods/tree/keep-armor-weapon-placesofpower-buffs
+[branch-12]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-appearances-menu-mod
 
 [upstream-1]: https://www.nexusmods.com/witcher3/mods/1996
 [upstream-2]: https://www.nexusmods.com/witcher3/mods/1723
@@ -47,3 +49,4 @@ branch | type of mod | upstream
 [upstream-7]: https://www.nexusmods.com/witcher3/mods/1221
 [upstream-7-2]: https://www.nexusmods.com/witcher3/mods/1460
 [upstream-10]: https://forums.nexusmods.com/index.php?/topic/4575465-mod-requesthelp-more-custom-map-markers/
+[upstream-12]: https://www.nexusmods.com/witcher3/mods/780
