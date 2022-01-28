@@ -14,7 +14,7 @@ branch | type of mod | upstream
 --- | --- | ---
 [correct-sorting-for-more-quick-slots][branch-4] | `content/blob0.bundle` `content/metadata.store` | [dependency][upstream-4] [dependency][upstream-4-2]
 [ultimate-roach-improvement-for-friendly-stash][branch-5] | `content/scripts/*.ws` | [upstream][upstream-5] [dependency][upstream-5-2]
-[fast-stash-for-friendly-hud][branch-6] | `content/scripts/*.ws` `input.settings` | [upstream][upstream-6] [dependency][upstream-6-2]
+[fast-stash-for-friendly-hud][branch-6] | `content/scripts/*.ws` `input.settings` | [upstream][upstream-6] [dependency][upstream-6-2] [upstream][upstream-6-3]
 [correct-sorting-for-sort-everything-and-more-quick-slots][branch-7] | `content/blob0.bundle` `content/metadata.store` | [dependency][upstream-7] [dependency][upstream-7-2]
 
 Mods
@@ -47,6 +47,7 @@ branch | type of mod | upstream
 [upstream-5-2]: https://www.nexusmods.com/witcher3/mods/4200
 [upstream-6]: https://www.nexusmods.com/witcher3/mods/4849
 [upstream-6-2]: https://www.nexusmods.com/witcher3/mods/3931
+[upstream-6-3]: https://www.nexusmods.com/witcher3/mods/365
 [upstream-7]: https://www.nexusmods.com/witcher3/mods/1221
 [upstream-7-2]: https://www.nexusmods.com/witcher3/mods/1460
 [upstream-10]: https://forums.nexusmods.com/index.php?/topic/4575465-mod-requesthelp-more-custom-map-markers/
