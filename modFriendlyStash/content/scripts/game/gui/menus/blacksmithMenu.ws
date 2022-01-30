@@ -617,7 +617,10 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		}
 		
 		_fixerInventory.AddMoney(price);
+		if (false)
+		{
 		_playerInv.RemoveMoney(price); //modFriendlyStash
+		}
 		_inv.RemoveAllItemEnhancements(item);
 		
 		if (_inv.GetItemQuantity(item) > 1)
