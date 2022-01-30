@@ -98,7 +98,7 @@ class W3CraftsmanComponent extends W3MerchantComponent
 				{
 					craftingCost = owner.invComp.GetItemPriceCrafting( owner.invComp.GetItem( items[ 0 ] ) );
 					owner.invComp.RemoveItem( items[ 0 ], 1 );
-					return craftingCost;
+					return 0; // To revert the mod, replace this line with: return craftingCost;
 				}
 			}
 		}
