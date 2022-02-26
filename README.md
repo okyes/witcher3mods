@@ -25,6 +25,7 @@ branch | type of mod | upstream
 [armor-weapon-infinite-buff][branch-9] | `content/blob0.bundle` `content/metadata.store`
 [keep-armor-weapon-placesofpower-buffs][branch-11] | `content/scripts/*.ws`
 [free-craft][branch-13] | `content/scripts/*.ws`
+[free-rune-glyph-removal][branch-14] | `content/scripts/*.ws`
 
 [branch-1]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-autoloot-configurable-allinone
 [branch-2]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-minimap-zoom
@@ -39,6 +40,7 @@ branch | type of mod | upstream
 [branch-11]: https://github.com/galeksandrp/witcher3mods/tree/keep-armor-weapon-placesofpower-buffs
 [branch-12]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-appearances-menu-mod
 [branch-13]: https://github.com/galeksandrp/witcher3mods/tree/free-craft
+[branch-14]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal
 
 [upstream-1]: https://www.nexusmods.com/witcher3/mods/1996
 [upstream-2]: https://www.nexusmods.com/witcher3/mods/1723
