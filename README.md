@@ -7,7 +7,7 @@ branch | type of mod | upstream
 [user-settings-for-sort-everything][branch-3] | `user.settings` | [dependency][upstream-3]
 [unlimited-custom-markers][branch-10] | `bin` | [upstream][upstream-10]
 [input-xml-for-appearances-menu-mod][branch-12] | `bin/input.xml` `input.settings` | [dependency][upstream-12]
-[input-xml-for-no-time-for-gwent][branch-16] | `input.settings` | [dependency][upstream-16]
+[input-settings-for-no-time-for-gwent][branch-16] | `input.settings` | [dependency][upstream-16]
 
 Merge mods
 
@@ -44,7 +44,7 @@ branch | type of mod | upstream
 [branch-13]: https://github.com/galeksandrp/witcher3mods/tree/free-craft
 [branch-14]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal
 [branch-15]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash
-[branch-16]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-no-time-for-gwent
+[branch-16]: https://github.com/galeksandrp/witcher3mods/tree/input-settings-for-no-time-for-gwent
 
 [upstream-1]: https://www.nexusmods.com/witcher3/mods/1996
 [upstream-2]: https://www.nexusmods.com/witcher3/mods/1723
