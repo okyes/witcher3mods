@@ -28,6 +28,7 @@ branch | type of mod | upstream
 [keep-armor-weapon-placesofpower-buffs][branch-11] | `content/scripts/*.ws`
 [free-craft][branch-13] | `content/scripts/*.ws`
 [free-rune-glyph-removal][branch-14] | `content/scripts/*.ws`
+[enchant-without-glyphs-and-runes][branch-17] | `content/scripts/*.ws`
 
 [branch-1]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-autoloot-configurable-allinone
 [branch-2]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-minimap-zoom
@@ -45,6 +46,7 @@ branch | type of mod | upstream
 [branch-14]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal
 [branch-15]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash
 [branch-16]: https://github.com/galeksandrp/witcher3mods/tree/input-settings-for-no-time-for-gwent
+[branch-17]: https://github.com/galeksandrp/witcher3mods/tree/enchant-without-glyphs-and-runes
 
 [upstream-1]: https://www.nexusmods.com/witcher3/mods/1996
 [upstream-2]: https://www.nexusmods.com/witcher3/mods/1723
