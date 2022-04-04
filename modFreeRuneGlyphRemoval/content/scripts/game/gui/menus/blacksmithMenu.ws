@@ -562,10 +562,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		}
 		
 		_fixerInventory.AddMoney(price);
-		if (false)
-		{
 		_inv.RemoveMoney(price);
-		}
 		_inv.RemoveAllItemEnhancements(item);
 		
 		if (_inv.GetItemQuantity(item) > 1)
