@@ -552,6 +552,7 @@ class CR4BlacksmithMenu extends CR4MenuBase
 		var socketItems	  : array<name>;
 		var itemsListText : string;
 		var idx, len	  : int;
+		var utilsPrice    : int;
 		
 		_inv.GetItemEnhancementItems(item, socketItems);
 		itemsListText = GetLocStringByKeyExt("panel_blacksmith_items_added");
@@ -561,10 +562,15 @@ class CR4BlacksmithMenu extends CR4MenuBase
 			itemsListText += ("<br/> +" + GetLocStringByKeyExt(_inv.GetItemLocalizedNameByName(socketItems[idx])));
 		}
 		
+		utilsPrice = price;
+		price = 0;
+
 		_fixerInventory.AddMoney(price);
 		_inv.RemoveMoney(price);
 		_inv.RemoveAllItemEnhancements(item);
 		
+		price = utilsPrice;
+
 		if (_inv.GetItemQuantity(item) > 1)
 		{
 			UpdateItem(item);
