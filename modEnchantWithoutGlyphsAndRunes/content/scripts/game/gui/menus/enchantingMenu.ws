@@ -432,8 +432,6 @@ class CR4EnchantingMenu extends CR4MenuBase
 		if (enchantResult)
 		{
 			ingredientsCount = enchantSchematic.ingredients.Size();
-
-			ingredientsCount = 0;
   			
 			for (i = 0; i < ingredientsCount; i=i+1 )
 			{
