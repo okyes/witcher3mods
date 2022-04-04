@@ -2024,10 +2024,17 @@ class W3EffectManager
 	public final function SimulateBuffTimePassing(simulatedTime : float)
 	{
 		var i : int;
+		var et : EEffectType;
 		
 		for(i=effects.Size()-1; i>=0; i-=1)
 		{
 			
+			et = effects[i].GetEffectType();
+			if (et == EET_EnhancedArmor || et == EET_EnhancedWeapon || et == EET_ShrineAard || et == EET_ShrineAxii || et == EET_ShrineIgni || et == EET_ShrineQuen || et == EET_ShrineYrden)
+			{
+				continue;
+			}
+
 			if(owner == GetWitcherPlayer() && (W3RepairObjectEnhancement)effects[i] && GetWitcherPlayer().HasRunewordActive('Runeword 5 _Stats'))
 			{
 				effects[i].OnTimeUpdated(simulatedTime);
