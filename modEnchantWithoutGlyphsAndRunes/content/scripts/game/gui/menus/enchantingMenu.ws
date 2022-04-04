@@ -399,6 +399,7 @@ class CR4EnchantingMenu extends CR4MenuBase
 		var enchantSchematic	: SEnchantmentSchematic;
 		var enchantResult   	: bool;
 		var schematicFound		: bool;
+		var utilsIngredientsCount : int;
 		
 		var i, price : int;
 		var playerMoney : int;
@@ -432,12 +433,18 @@ class CR4EnchantingMenu extends CR4MenuBase
 		if (enchantResult)
 		{
 			ingredientsCount = enchantSchematic.ingredients.Size();
-  			
+
+			utilsIngredientsCount = ingredientsCount;
+			ingredientsCount = 0;
+
 			for (i = 0; i < ingredientsCount; i=i+1 )
 			{
 				curIngredient = enchantSchematic.ingredients[i];
 				m_playerInventory.RemoveItemByName(curIngredient.itemName, curIngredient.quantity);
 			}
+
+			ingredientsCount = utilsIngredientsCount;
+
 			
 			
 			
