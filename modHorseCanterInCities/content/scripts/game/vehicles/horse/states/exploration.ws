@@ -347,6 +347,8 @@ state Exploration in W3HorseComponent
 	event OnSettlementEnter()
 	{	
 		
+		return false;
+
 		if( thePlayer.GetIsHorseRacing() )
 		{
 			return false;
@@ -1962,10 +1964,14 @@ state Exploration in W3HorseComponent
 	
 	default DOUBLE_TAP_WINDOW = 0.4;
 	
+	/*
+
 	private function CanCanter() : bool
 	{
 		return ( thePlayer.m_SettlementBlockCanter < 1 ) || ( thePlayer.GetIsHorseRacing() ); 
 	}
+	
+	*/
 	
 	
 	event OnSpeedPress( action : SInputAction )
@@ -2445,5 +2451,10 @@ state Exploration in W3HorseComponent
 	{
 		currSpeedSound = 0.0;
 		desiredSpeedSound = 0.0;
+	}
+
+	private function CanCanter() : bool
+	{
+		return true; 
 	}
 }
