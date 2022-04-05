@@ -14,10 +14,10 @@ Merge mods
 branch | type of mod | upstream
 --- | --- | ---
 [correct-sorting-for-more-quick-slots][branch-4] | `content/blob0.bundle` `content/metadata.store` | [dependency][upstream-4] [dependency][upstream-4-2]
-[ultimate-roach-improvement-for-friendly-stash][branch-5] | `content/scripts/*.ws` | [upstream][upstream-5] [dependency][upstream-5-2]
+[ultimate-roach-improvement-for-friendly-stash][branch-5]<br>instead recommend `friendly stash`+`horse canter in cities`+`better roach control` | `content/scripts/*.ws` | [upstream][upstream-5] [dependency][upstream-5-2]
 [fast-stash-for-friendly-hud][branch-6] | `content/scripts/*.ws` `input.settings` | [upstream][upstream-6] [dependency][upstream-6-2] [upstream][upstream-6-3]
 [correct-sorting-for-sort-everything-and-more-quick-slots][branch-7] | `content/blob0.bundle` `content/metadata.store` | [dependency][upstream-7] [dependency][upstream-7-2]
-[free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash][branch-15] | `content/scripts/*.ws` | [upstream][upstream-5] [dependency][upstream-5-2] [upstream][upstream-5-3]
+[free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash][branch-15]<br>instead recommend `friendly stash`+`horse canter in cities`+`better roach control`+`free rune glyph removal 0.1.1` | `content/scripts/*.ws` | [upstream][upstream-5] [dependency][upstream-5-2] [upstream][upstream-5-3]
 
 Mods
 
