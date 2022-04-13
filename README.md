@@ -23,7 +23,7 @@ Mods
 
 branch | type of mod | upstream
 --- | --- | ---
-[place-of-power-infinite-buff][branch-8] | `content/scripts/*.ws`
+[place-of-power-infinite-buff][branch-8]<br>recommend use `console commands utils` `ushr` command | `content/scripts/*.ws`
 [armor-weapon-infinite-buff][branch-9] | `content/blob0.bundle` `content/metadata.store`
 [keep-armor-weapon-placesofpower-buffs][branch-11] | `content/scripts/*.ws`
 [free-craft][branch-13] | `content/scripts/*.ws`
