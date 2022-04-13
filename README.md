@@ -30,6 +30,7 @@ branch | type of mod | upstream
 [free-rune-glyph-removal][branch-14] | `content/scripts/*.ws`
 [enchant-without-glyphs-and-runes][branch-17] | `content/scripts/*.ws`
 [horse-canter-in-cities][branch-18] | `content/scripts/*.ws`
+[console-commands-utils][branch-19] | `content/scripts/*.ws`
 
 [branch-1]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-autoloot-configurable-allinone
 [branch-2]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-minimap-zoom
@@ -49,6 +50,7 @@ branch | type of mod | upstream
 [branch-16]: https://github.com/galeksandrp/witcher3mods/tree/input-settings-for-no-time-for-gwent
 [branch-17]: https://github.com/galeksandrp/witcher3mods/tree/enchant-without-glyphs-and-runes
 [branch-18]: https://github.com/galeksandrp/witcher3mods/tree/horse-canter-in-cities
+[branch-19]: https://github.com/galeksandrp/witcher3mods/tree/console-commands-utils
 
 [upstream-1]: https://www.nexusmods.com/witcher3/mods/1996
 [upstream-2]: https://www.nexusmods.com/witcher3/mods/1723
