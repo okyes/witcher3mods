@@ -1964,8 +1964,7 @@ state Exploration in W3HorseComponent
 	
 	private function CanCanter() : bool
 	{
-		//modSigns
-		return thePlayer.IsActionAllowed( EIAB_RunAndSprint ) && ( ( thePlayer.m_SettlementBlockCanter < 1 ) || thePlayer.GetIsHorseRacing() ); // #B shouldn't be also here speedRestriction <= CANTER_SPEED ?
+		return ( thePlayer.m_SettlementBlockCanter < 1 ) || ( thePlayer.GetIsHorseRacing() ); 
 	}
 	
 	

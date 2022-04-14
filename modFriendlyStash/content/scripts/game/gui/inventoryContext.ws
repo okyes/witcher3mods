@@ -414,10 +414,6 @@ class W3InventoryGridContext extends W3InventoryItemContext
 		{
 			invMenuRef.SwitchShowStashItems();
 		}
-		else if( currentInventoryState == IMS_Stash && GetFriendlyStashConfig().bagsRoach && keyName == "gamepad_X" )
-		{
-			invMenuRef.ShowRoachStatsPopup();
-		}
 		else
 		{
 			super.HandleUserFeedback(keyName);
@@ -579,10 +575,6 @@ class W3ExternalGridContext extends W3InventoryItemContext
 			else if( keyName == "gamepad_R2" ) //modFriendlyStash
 			{
 				invMenuRef.SwitchShowStashItems();
-			}
-			else if( keyName == "gamepad_X" ) //modFriendlyStash
-			{
-				invMenuRef.ShowRoachStatsPopup();
 			}
 		}
 		else

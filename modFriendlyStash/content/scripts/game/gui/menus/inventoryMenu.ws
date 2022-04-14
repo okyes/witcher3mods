@@ -220,8 +220,6 @@ class CR4InventoryMenu extends CR4MenuBase
 		_horsePaperdollInv = new  W3GuiHorseInventoryComponent in this;
 		_horsePaperdollInv.Initialize(GetWitcherPlayer().GetHorseManager().GetInventoryComponent());
 		
-		RoachWasOverencumbered = GetWitcherPlayer().GetHorseManager().IsOverencumbered(); //modFriendlyStash
-		
 		_tooltipDataProvider = new W3TooltipComponent in this;
 		_tooltipDataProvider.initialize(_inv, m_flashValueStorage);
 		
@@ -819,8 +817,6 @@ class CR4InventoryMenu extends CR4MenuBase
 		
 		
 		UpdateItemsCounter();
-		
-		UpdateRoachEncumbrance(); //modFriendlyStash
 	}
 	
 	public function GetCurrentInventoryState():EInventoryMenuState
@@ -3419,55 +3415,6 @@ class CR4InventoryMenu extends CR4MenuBase
 		{
 			m_currentContext.UpdateContext();
 		}
-	}
-	
-	public function ShowRoachStatsPopup() //modFriendlyStash
-	{
-		var messageText : string;
-		var horseManager : W3HorseManager = GetWitcherPlayer().GetHorseManager();
-		var curWeight, maxWeight : int;
-		
-		curWeight = CeilF( horseManager.GetEncumbrance() );
-		maxWeight = CeilF( horseManager.GetMaxEncumbrance() );
-		messageText = GetLocStringByKeyExt( "attribute_name_weight" ) + ": " + curWeight + " / " + maxWeight;
-		if( horseManager.IsOverencumbered() )
-		{
-			messageText += "<br>" + GetLocStringByKeyExt( "fs_horse_overenc" );
-			messageText += "<br>" + GetLocStringByKeyExt( "fs_horse_no_gallop" );
-			messageText += "<br>" + GetLocStringByKeyExt( "fs_horse_no_call" );
-		}
-	
-		ShowBookPopup( GetLocStringByKeyExt( "fs_show_horse_enc" ), messageText, GetInvalidUniqueId(), true );
-	}
-	
-	var RoachWasOverencumbered : bool; //modFriendlyStash
-	
-	function UpdateRoachEncumbrance() //modFriendlyStash
-	{
-		var messageText : string;
-		var horseManager : W3HorseManager = GetWitcherPlayer().GetHorseManager();
-		var curWeight, maxWeight : int;
-		
-		horseManager.UpdateHorseEncumbrance();
-		
-		curWeight = CeilF( horseManager.GetEncumbrance() );
-		maxWeight = CeilF( horseManager.GetMaxEncumbrance() );
-		
-		if( RoachWasOverencumbered )
-		{
-			if( !horseManager.IsOverencumbered() )
-				messageText = GetLocStringByKeyExt( "fs_horse_good" ) + " (" + GetLocStringByKeyExt( "attribute_name_weight" ) + ": " + curWeight + " / " + maxWeight + ")";
-		}
-		else
-		{
-			if( horseManager.IsOverencumbered() )
-				messageText = GetLocStringByKeyExt( "fs_horse_overenc" ) + " (" + GetLocStringByKeyExt( "attribute_name_weight" ) + ": " + curWeight + " / " + maxWeight + ")";
-		}
-		
-		if( messageText != "" )
-			showNotification( messageText );
-		
-		RoachWasOverencumbered = horseManager.IsOverencumbered();
 	}
 	
 	event  OnConsumeItem( item : SItemUniqueId ) 

@@ -6058,13 +6058,9 @@ statemachine class W3PlayerWitcher extends CR4Player
 	{
 		var value : float;
 		
-		//modFriendlyStash begin
-		if( fStashConfig.bagsRoach == false )
-			value = GetHorseManager().GetMaxEncumbrance();
+		value = CalculateAttributeValue(GetHorseManager().GetHorseAttributeValue('encumbrance', false));
 		usesHorseBonus = (value > 0);
-		value += CalculateAttributeValue( GetAttributeValue('encumbrance') - GetAbilityAttributeValue('ConGeralt', 'encumbrance') );
-		value += fStashConfig.baseWeightGeralt;
-		//modFriendlyStash end
+		value += CalculateAttributeValue( GetAttributeValue('encumbrance') );
 		
 		return value;
 	}
@@ -6129,8 +6125,6 @@ statemachine class W3PlayerWitcher extends CR4Player
 		{
 			RemoveAllBuffsOfType(EET_OverEncumbered);
 		}
-		
-		GetWitcherPlayer().GetHorseManager().UpdateHorseEncumbrance(); //modFriendlyStash
 	}
 	
 	public final function GetSkillGroupIDFromIndex(idx : int) : int
