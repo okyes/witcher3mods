@@ -1,2 +1,2 @@
 [Exploration]
-IK_F6=(Action=QuickLoad)
+IK_F9=(Action=QuickLoad)
