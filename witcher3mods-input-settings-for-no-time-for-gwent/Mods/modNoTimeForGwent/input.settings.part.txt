@@ -1,0 +1,2 @@
+[EMPTY_CONTEXT]
+IK_N=(Action=NoTimeForGwent)

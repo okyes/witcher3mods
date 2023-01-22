@@ -1,0 +1,2 @@
+[Exploration]
+IK_F6=(Action=QuickLoad)
