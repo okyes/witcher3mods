@@ -1,55 +1,55 @@
 Mods for Witcher 3 Mod Manager (W3MM)
 
-no | branch | type of mod | :up: upstream/:de: dependencies
---- | --- | --- | ---
+branch | type of mod | :up: upstream/:de: dependencies
+--- | --- | ---
 ||
-<sub>1</sub> | [input-xml-for-autoloot-configurable-allinone] | `bin/input.xml` `input.settings` | :de: <sub>[AutoLoot Configurable All-in-One (1.30-1.31)]</sub>
+[input-xml-for-autoloot-configurable-allinone] | `bin/input.xml` `input.settings` | :de: <sub>[AutoLoot Configurable All-in-One (1.30-1.31)]</sub>
 ||
-<sub>2</sub> | [input-xml-for-minimap-zoom] | `bin/input.xml` `input.settings` | :de: <sub>[Minimap Zoom 1.31]</sub>
+[input-xml-for-minimap-zoom] | `bin/input.xml` `input.settings` | :de: <sub>[Minimap Zoom 1.31]</sub>
 ||
-<sub>3</sub> | [user-settings-for-sort-everything] | `user.settings` | :de: <sub>[Sort Everything]</sub>
+[user-settings-for-sort-everything] | `user.settings` | :de: <sub>[Sort Everything]</sub>
 ||
-<sub>4</sub> | [unlimited-custom-markers] | `bin` | :up: <sub>[More custom map markers]</sub>
+[unlimited-custom-markers] | `bin` | :up: <sub>[More custom map markers]</sub>
 ||
-<sub>5</sub> | [input-xml-for-appearances-menu-mod] | `bin/input.xml` `input.settings` | :de: <sub>[AMM - The Appearances Menu Mod]</sub>
+[input-xml-for-appearances-menu-mod] | `bin/input.xml` `input.settings` | :de: <sub>[AMM - The Appearances Menu Mod]</sub>
 ||
-<sub>6</sub> | [input-settings-for-no-time-for-gwent] | `input.settings` | :de: <sub>[No time for Gwent]</sub>
+[input-settings-for-no-time-for-gwent] | `input.settings` | :de: <sub>[No time for Gwent]</sub>
 
 Merge mods
 
-no | branch | type of mod | :up: upstream/:de: dependencies
---- | --- | --- | ---
+branch | type of mod | :up: upstream/:de: dependencies
+--- | --- | ---
 ||
-<sub>7</sub> | [correct-sorting-for-more-quick-slots]<br><br>analogue of _[this merge][v1.4 merge for More Quick Slots 1.22]_ for _[More Quick Slots and Quick Inventory] 1.31.3_ | `content/blob0.bundle`<br>`content/metadata.store` | :de: <sub>[More Quick Slots and Quick Inventory]</sub><br>:de: <sub>[Corrected Sorting]</sub>
+[correct-sorting-for-more-quick-slots]<br><br>analogue of _[this merge][v1.4 merge for More Quick Slots 1.22]_ for _[More Quick Slots and Quick Inventory] 1.31.3_ | `content/blob0.bundle`<br>`content/metadata.store` | :de: <sub>[More Quick Slots and Quick Inventory]</sub><br>:de: <sub>[Corrected Sorting]</sub>
 ||
-<sub>8</sub> | [ultimate-roach-improvement-for-friendly-stash]<br><br>instead recommend _[Friendly Stash]_ + _[horse-canter-in-cities]_ + _[Better Roach Control]_  | `content/scripts/*.ws` | :up: <sub>[Friendly Stash]</sub><br>:de: <sub>[Ultimate Roach Improvement]</sub>
+[ultimate-roach-improvement-for-friendly-stash]<br><br>instead recommend _[Friendly Stash]_ + _[horse-canter-in-cities]_ + _[Better Roach Control]_  | `content/scripts/*.ws` | :up: <sub>[Friendly Stash]</sub><br>:de: <sub>[Ultimate Roach Improvement]</sub>
 ||
-<sub>9</sub> | [fast-stash-for-friendly-hud] | `content/scripts/*.ws`<br>`input.settings` | :up: <sub>[Compatibility-Fix for Friendly HUD and Fast Stash Menu]</sub><br>:de: <sub>[Fast Stash Menu]</sub><br>:up: <sub>[Friendly HUD]</sub>
+[fast-stash-for-friendly-hud] | `content/scripts/*.ws`<br>`input.settings` | :up: <sub>[Compatibility-Fix for Friendly HUD and Fast Stash Menu]</sub><br>:de: <sub>[Fast Stash Menu]</sub><br>:up: <sub>[Friendly HUD]</sub>
 ||
-<sub>10</sub> | [correct-sorting-for-sort-everything-and-more-quick-slots]<br><br>analogue of _[this merge][v1.4 merge for More Quick Slots 1.22]_ for _[Sort Everything and More Quick Slots - W3MM]_ | `content/blob0.bundle`<br>`content/metadata.store` | :de: <sub>[More Quick Slots and Quick Inventory]</sub><br>:up: <sub>[Sort Everything]</sub><br>:de: <sub>[Corrected Sorting]</sub>
+[correct-sorting-for-sort-everything-and-more-quick-slots]<br><br>analogue of _[this merge][v1.4 merge for More Quick Slots 1.22]_ for _[Sort Everything and More Quick Slots - W3MM]_ | `content/blob0.bundle`<br>`content/metadata.store` | :de: <sub>[More Quick Slots and Quick Inventory]</sub><br>:up: <sub>[Sort Everything]</sub><br>:de: <sub>[Corrected Sorting]</sub>
 ||
-<sub>11</sub> | [free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash]<br><br>instead recommend _[Friendly Stash]_ + _[horse-canter-in-cities]_ + _[Better Roach Control]_ + _[free-rune-glyph-removal] 0.1.1_ | `content/scripts/*.ws` | :up: <sub>[Friendly Stash]</sub><br>:de: <sub>[Ultimate Roach Improvement]</sub><br>:up: <sub>[free-rune-glyph-removal]</sub>
+[free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash]<br><br>instead recommend _[Friendly Stash]_ + _[horse-canter-in-cities]_ + _[Better Roach Control]_ + _[free-rune-glyph-removal] 0.1.1_ | `content/scripts/*.ws` | :up: <sub>[Friendly Stash]</sub><br>:de: <sub>[Ultimate Roach Improvement]</sub><br>:up: <sub>[free-rune-glyph-removal]</sub>
 
 Mods
 
-no | branch | type of mod
---- | --- | ---
+branch | type of mod
+--- | ---
 ||
-<sub>12</sub> | [place-of-power-infinite-buff]<br><br>made as analogue of _[Place of Power Tweaks]_ to test maximum buff duration on which buff icon countdown works<br>recommend use _[console-commands-utils]_ `ushr` command instead to restore buffs | `content/scripts/*.ws`
+[place-of-power-infinite-buff]<br><br>made as analogue of _[Place of Power Tweaks]_ to test maximum buff duration on which buff icon countdown works<br>recommend use _[console-commands-utils]_ `ushr` command instead to restore buffs | `content/scripts/*.ws`
 ||
-<sub>13</sub> | [armor-weapon-infinite-buff]<br><br>made as analogue of _[Gear Improvements Last Longer - GILL]_ to test maximum buff duration on which buff icon countdown works<br>recommend use _[console-commands-utils]_ `uwpn` command instead to restore buffs | `content/blob0.bundle`<br>`content/metadata.store`
+[armor-weapon-infinite-buff]<br><br>made as analogue of _[Gear Improvements Last Longer - GILL]_ to test maximum buff duration on which buff icon countdown works<br>recommend use _[console-commands-utils]_ `uwpn` command instead to restore buffs | `content/blob0.bundle`<br>`content/metadata.store`
 ||
-<sub>14</sub> | [keep-armor-weapon-placesofpower-buffs] | `content/scripts/*.ws`
+[keep-armor-weapon-placesofpower-buffs] | `content/scripts/*.ws`
 ||
-<sub>15</sub> | [free-craft]<br><br>made as analogue of _[Free Crafting - No Crafting requirement]_ without removing ingredients requirement | `content/scripts/*.ws`
+[free-craft]<br><br>made as analogue of _[Free Crafting - No Crafting requirement]_ without removing ingredients requirement | `content/scripts/*.ws`
 ||
-<sub>16</sub> | [free-rune-glyph-removal] | `content/scripts/*.ws`
+[free-rune-glyph-removal] | `content/scripts/*.ws`
 ||
-<sub>17</sub> | [enchant-without-glyphs-and-runes] | `content/scripts/*.ws`
+[enchant-without-glyphs-and-runes] | `content/scripts/*.ws`
 ||
-<sub>18</sub> | [horse-canter-in-cities]<br><br>analogue of _[Galloping In Cities]_ made for compatibility with other mods | `content/scripts/*.ws`
+[horse-canter-in-cities]<br><br>analogue of _[Galloping In Cities]_ made for compatibility with other mods | `content/scripts/*.ws`
 ||
-<sub>19</sub> | [console-commands-utils]<br><br>`ushr`, `uwpn`, `ubuff` commands made as analogue of _[Increased Place of Power-Armor-Weapon Buff Duration]_ to restore buffs when they removed after important story moments | `content/scripts/*.ws`
+[console-commands-utils]<br><br>`ushr`, `uwpn`, `ubuff` commands made as analogue of _[Increased Place of Power-Armor-Weapon Buff Duration]_ to restore buffs when they removed after important story moments | `content/scripts/*.ws`
 
 [Galloping In Cities]: https://www.nexusmods.com/witcher3/mods/385
 [Gear Improvements Last Longer - GILL]: https://www.nexusmods.com/witcher3/mods/419
