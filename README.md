@@ -17,6 +17,10 @@ Unpacked mods for Witcher 3 Mod Manager (W3MM) | | :up: upstream/:de: dependenci
 [user-settings-for-sort-everything] | `user.settings` | :de: <sub>[Sort Everything]</sub>
 ||
 [input-settings-for-no-time-for-gwent] | `input.settings` | :de: <sub>[No time for Gwent]</sub>
+||
+[input-settings-for-fast-travel-anywhere] | `input.settings` | :de: <sub>[Fast Travel Anywhere (Teleport to Map Pin) - Teleport to Freecam - Resurrection (nextGen ready)]</sub>
+||
+[input-settings-for-more-quick-slots] | `input.settings` | :de: <sub>[More Quick Slots and Quick Inventory]</sub>
 
 <br>
 
@@ -64,9 +68,15 @@ Mods | -
 
 [Better Roach Control]: https://www.nexusmods.com/witcher3/mods/2000
 
+[Fast Travel Anywhere (Teleport to Map Pin) - Teleport to Freecam - Resurrection (nextGen ready)]: https://www.nexusmods.com/witcher3/mods/4558
+
+[user-settings-for-sort-everything]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-user-settings-for-sort-everything
+[input-settings-for-no-time-for-gwent]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-settings-for-no-time-for-gwent
+[input-settings-for-fast-travel-anywhere]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-settings-for-fast-travel-anywhere
+[input-settings-for-more-quick-slots]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-settings-for-more-quick-slots
+
 [input-xml-for-autoloot-configurable-allinone]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-autoloot-configurable-allinone
 [input-xml-for-minimap-zoom]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-minimap-zoom
-[user-settings-for-sort-everything]: https://github.com/galeksandrp/witcher3mods/tree/user-settings-for-sort-everything
 [correct-sorting-for-more-quick-slots]: https://github.com/galeksandrp/witcher3mods/tree/correct-sorting-for-more-quick-slots
 [ultimate-roach-improvement-for-friendly-stash]: https://github.com/galeksandrp/witcher3mods/tree/ultimate-roach-improvement-for-friendly-stash
 [fast-stash-for-friendly-hud]: https://github.com/galeksandrp/witcher3mods/tree/fast-stash-for-friendly-hud
@@ -79,7 +89,6 @@ Mods | -
 [free-craft]: https://github.com/galeksandrp/witcher3mods/tree/free-craft
 [free-rune-glyph-removal]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal
 [free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash
-[input-settings-for-no-time-for-gwent]: https://github.com/galeksandrp/witcher3mods/tree/input-settings-for-no-time-for-gwent
 [enchant-without-glyphs-and-runes]: https://github.com/galeksandrp/witcher3mods/tree/enchant-without-glyphs-and-runes
 [horse-canter-in-cities]: https://github.com/galeksandrp/witcher3mods/tree/horse-canter-in-cities
 [console-commands-utils]: https://github.com/galeksandrp/witcher3mods/tree/console-commands-utils
