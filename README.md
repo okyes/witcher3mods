@@ -1,23 +1,26 @@
-Mods for Witcher 3 Mod Manager (W3MM)
-
-branch | type of mod | :up: upstream/:de: dependencies
+Mods for Witcher 3 Mod Manager (W3MM) | | :up: upstream/:de: dependencies
 --- | --- | ---
 ||
 [input-xml-for-autoloot-configurable-allinone] | `bin/input.xml` `input.settings` | :de: <sub>[AutoLoot Configurable All-in-One (1.30-1.31)]</sub>
 ||
 [input-xml-for-minimap-zoom] | `bin/input.xml` `input.settings` | :de: <sub>[Minimap Zoom 1.31]</sub>
 ||
-[user-settings-for-sort-everything] | `user.settings` | :de: <sub>[Sort Everything]</sub>
-||
 [unlimited-custom-markers] | `bin` | :up: <sub>[More custom map markers]</sub>
 ||
 [input-xml-for-appearances-menu-mod] | `bin/input.xml` `input.settings` | :de: <sub>[AMM - The Appearances Menu Mod]</sub>
+
+<br>
+
+Unpacked mods for Witcher 3 Mod Manager (W3MM) | | :up: upstream/:de: dependencies
+--- | --- | ---
+||
+[user-settings-for-sort-everything] | `user.settings` | :de: <sub>[Sort Everything]</sub>
 ||
 [input-settings-for-no-time-for-gwent] | `input.settings` | :de: <sub>[No time for Gwent]</sub>
 
-Merge mods
+<br>
 
-branch | type of mod | :up: upstream/:de: dependencies
+Merge mods | | :up: upstream/:de: dependencies
 --- | --- | ---
 ||
 [correct-sorting-for-more-quick-slots]<br><br>analogue of _[this merge][v1.4 merge for More Quick Slots 1.22]_ for _[More Quick Slots and Quick Inventory] 1.31.3_ | `content/blob0.bundle`<br>`content/metadata.store` | :de: <sub>[More Quick Slots and Quick Inventory]</sub><br>:de: <sub>[Corrected Sorting]</sub>
@@ -30,9 +33,9 @@ branch | type of mod | :up: upstream/:de: dependencies
 ||
 [free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash]<br><br>instead recommend _[Friendly Stash]_ + _[horse-canter-in-cities]_ + _[Better Roach Control]_ + _[free-rune-glyph-removal] 0.1.1_ | `content/scripts/*.ws` | :up: <sub>[Friendly Stash]</sub><br>:de: <sub>[Ultimate Roach Improvement]</sub><br>:up: <sub>[free-rune-glyph-removal]</sub>
 
-Mods
+<br>
 
-branch | type of mod
+Mods | -
 --- | ---
 ||
 [place-of-power-infinite-buff]<br><br>made as analogue of _[Place of Power Tweaks]_ to test maximum buff duration on which buff icon countdown works<br>recommend use _[console-commands-utils]_ `ushr` command instead to restore buffs | `content/scripts/*.ws`
