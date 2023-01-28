@@ -1,0 +1,11 @@
+
+
+[SortEverything]
+seInventorySorting=true
+seCraftSorting=2
+seBookSorting=true
+seJournalSorting=2
+seInventoryAutoCleanNew=false
+seJournalForceFinishedSorting=true
+seJournalForceFinishedLocSorting=true
+
