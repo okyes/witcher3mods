@@ -88,15 +88,15 @@ class CR4CraftingMenu extends CR4ListBaseMenu
 		m_fxSetPinnedRecipe = m_flashModule.GetMemberFlashFunction("setPinnedRecipe");
 		m_fxSetMerchantCheck = m_flashModule.GetMemberFlashFunction("setMerchantTypeCheck");
 		
-		if(_craftsmanComponent)
-		{
+		//if(_craftsmanComponent)
+		//{
 			m_npcInventory = m_npc.GetInventory();
 			bCouldCraft = true;
 			UpdateMerchantData(m_npc);
 			
 			m_shopInvComponent = new W3GuiShopInventoryComponent in this;
 			m_shopInvComponent.Initialize( m_npcInventory );
-		}
+		//}
 		
 		m_fxSetCraftingEnabled.InvokeSelfOneArg(FlashArgBool(bCouldCraft));
 		

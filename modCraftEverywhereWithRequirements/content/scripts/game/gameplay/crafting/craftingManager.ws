@@ -100,11 +100,14 @@ class W3CraftingManager
 				return ECE_UnknownSchematic;
 			}
 
+/*
+
 			if ( !craftMasterComp.IsCraftsmanType( schem.requiredCraftsmanType ) )
 			{
 				return ECE_WrongCraftsmanType;
 			}
 
+*/
 			if ( craftMasterComp.GetCraftsmanLevel( schem.requiredCraftsmanType ) < schem.requiredCraftsmanLevel )
 			{
 				return ECE_TooLowCraftsmanLevel;
@@ -150,6 +153,11 @@ class W3CraftingManager
 	
 		if ( GetSchematic(schematic, schem) )
 		{
+			if ( !craftMasterComp.IsCraftsmanType( schem.requiredCraftsmanType ) )
+			{
+				return schem.baseCraftingPrice;
+			}
+
 			return craftMasterComp.CalculateCostOfCrafting( schem.craftedItemName );
 		}
 
@@ -181,7 +189,14 @@ class W3CraftingManager
 		
 		
 		craftsman = (CGameplayEntity)craftMasterComp.GetEntity();
+		if ( !craftMasterComp.IsCraftsmanType( schem.requiredCraftsmanType ) )
+		{
+			thePlayer.inv.RemoveMoney(GetCraftingCost(schemName));
+		}
+		else
+		{
 		thePlayer.inv.GiveMoneyTo(craftsman.GetInventory(), GetCraftingCost(schemName), false);
+		}
 		
 		
 		equipAfterCrafting = false;
