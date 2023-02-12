@@ -11029,7 +11029,7 @@ statemachine class W3PlayerWitcher extends CR4Player
 		
 		thePlayer.RemoveTimer('EatTimer');
 		
-		if ((thePlayer.GetStat(BCS_Vitality) < (thePlayer.GetStatMax(BCS_Vitality) - 1000) ) && (lastHealth != thePlayer.GetStat(BCS_Vitality) ))
+		if ((thePlayer.GetStat(BCS_Vitality) < thePlayer.GetStatMax(BCS_Vitality) ) && (lastHealth != thePlayer.GetStat(BCS_Vitality) ))
 		{
 				lastHealth = thePlayer.GetStat( BCS_Vitality );
 				GetItemEquippedOnSlot(EES_Potion1, item1);
