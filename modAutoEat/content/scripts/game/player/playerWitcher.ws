@@ -132,7 +132,7 @@ statemachine class W3PlayerWitcher extends CR4Player
 	private var invUpdateTransaction : bool;
 		default invUpdateTransaction = false;
 	
-	
+	private var lastHealth : float;
 	
 	
 	
@@ -1975,6 +1975,7 @@ statemachine class W3PlayerWitcher extends CR4Player
 	
 		currVitality = GetStat(BCS_Vitality);
 		
+		eatingstart();
 		
 		if(action.processedDmg.vitalityDamage >= currVitality)
 		{
@@ -4499,7 +4500,7 @@ statemachine class W3PlayerWitcher extends CR4Player
 		GetItemEquippedOnSlot(slot, item);
 		if(inv.ItemHasTag(item, 'Edibles'))
 		{
-			ConsumeItem( item );
+			eatingstart();
 		}
 		else
 		{			
@@ -4687,7 +4688,7 @@ statemachine class W3PlayerWitcher extends CR4Player
 		var toSlot : EEquipmentSlots;
 		var i : int;
 		var equippedNewEdible : bool;
-		
+
 		itemName = inv.GetItemName( itemId );
 		
 		if (itemName == 'q111_imlerith_acorn' ) 
@@ -4754,7 +4755,6 @@ statemachine class W3PlayerWitcher extends CR4Player
 						break;
 					}
 				}
-				
 				
 				if(!equippedNewEdible)
 				{
@@ -11020,6 +11020,48 @@ statemachine class W3PlayerWitcher extends CR4Player
 		FactsRemove( "StandAloneEP2" );
 		
 		theGame.GetJournalManager().ForceUntrackingQuestForEP1Savegame();
+	}
+	
+	timer function EatTimer( dt : float, id : int)
+	{
+		var items : array<SItemUniqueId>;
+		var item1,item2,item3,item4 : SItemUniqueId;
+		
+		thePlayer.RemoveTimer('EatTimer');
+		
+		if ((thePlayer.GetStat(BCS_Vitality) < (thePlayer.GetStatMax(BCS_Vitality) - 1000) ) && (lastHealth != thePlayer.GetStat(BCS_Vitality) ))
+		{
+				lastHealth = thePlayer.GetStat( BCS_Vitality );
+				GetItemEquippedOnSlot(EES_Potion1, item1);
+				GetItemEquippedOnSlot(EES_Potion2, item2);
+				GetItemEquippedOnSlot(EES_Potion3, item3);
+				GetItemEquippedOnSlot(EES_Potion4, item4);
+				if     (inv.ItemHasTag(item1, 'Edibles')){thePlayer.ConsumeItem(item1);}
+				else if(inv.ItemHasTag(item2, 'Edibles')){thePlayer.ConsumeItem(item2);}
+				else if(inv.ItemHasTag(item3, 'Edibles')){thePlayer.ConsumeItem(item3);}
+				else if(inv.ItemHasTag(item4, 'Edibles')){thePlayer.ConsumeItem(item4);}
+				else {theGame.GetGuiManager().ShowNotification("no selected edible on the slots");}	
+				eatingstart();		
+		}
+	}	
+	
+	function eatingstart()
+	{
+		var effectArray : array< CBaseGameplayEffect > = thePlayer.GetCurrentEffects();
+		var i : int;
+		var durationLeft : float;
+		var EatingState : bool = false;
+	
+		durationLeft == 0.0 ;
+		for ( i = 0; i < effectArray.Size(); i += 1 )
+		{
+			if ( (string)effectArray[i].GetEffectType() == "EET_WellFed" ) 
+			{
+				EatingState = true;
+				durationLeft = effectArray[i].GetDurationLeft() + 0.15 ;
+			}
+		}
+		thePlayer.AddTimer('EatTimer', durationLeft  , true);
 	}
 }
 

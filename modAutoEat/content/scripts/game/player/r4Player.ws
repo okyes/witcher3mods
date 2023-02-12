@@ -10611,7 +10611,7 @@ statemachine abstract import class CR4Player extends CPlayer
 			{
 				potionToxicity = CalculateAttributeValue(inv.GetItemAttributeValue(itemId, 'toxicity'));
 				abilityManager.GainStat(BCS_Toxicity, potionToxicity );				
-				AddEffectDefault(EET_Drunkenness, NULL, inv.GetItemName(itemId));
+				//AddEffectDefault(EET_Drunkenness, NULL, inv.GetItemName(itemId));
 			}
 			PlayItemConsumeSound( itemId );
 		}
