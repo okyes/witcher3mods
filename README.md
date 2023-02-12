@@ -1,3 +1,14 @@
+Useful command line commands
+
+```
+ShowPins(0/1)	Enables (1) or disables (0) the ability to see all pins (points of interest) on the map, whether or not you've discovered them.
+additem('item code', amount)	Adds the specified item to your inventory. Can optionally specify an amount. Consult this item codes list for details.
+additem('Doppler mutagen')
+additem('Succubus mutagen')
+additem('Clearing Potion')
+additem('Restoring Potion')
+```
+
 Mods for Witcher 3 Mod Manager (W3MM) | | :up: upstream/:de: dependencies
 --- | --- | ---
 ||
