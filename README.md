@@ -12,20 +12,18 @@ additem('Restoring Potion')
 Mods for Witcher 3 Mod Manager (W3MM) | | :up: upstream/:de: dependencies
 --- | --- | ---
 ||
-[input-xml-for-autoloot-configurable-allinone] | `bin/input.xml` `input.settings` | :de: <sub>[AutoLoot Configurable All-in-One (1.30-1.31)]</sub>
-||
-[input-xml-for-minimap-zoom] | `bin/input.xml` `input.settings` | :de: <sub>[Minimap Zoom 1.31]</sub>
-||
 [unlimited-custom-markers] | `bin` | :up: <sub>[More custom map markers]</sub>
-||
-[input-xml-for-appearances-menu-mod] | `bin/input.xml` `input.settings` | :de: <sub>[AMM - The Appearances Menu Mod]</sub>
 
 <br>
 
 Unpacked mods for Witcher 3 Mod Manager (W3MM) | | :up: upstream/:de: dependencies
 --- | --- | ---
 ||
-[user-settings-for-sort-everything] | `user.settings` | :de: <sub>[Sort Everything]</sub>
+[input-xml-for-autoloot-configurable-allinone] | `bin/input.xml` `input.settings` | :de: <sub>[AutoLoot Configurable All-in-One (1.30-1.31)]</sub>
+||
+[input-xml-for-minimap-zoom] | `bin/input.xml` `input.settings` | :de: <sub>[Minimap Zoom 1.31]</sub>
+||
+[input-xml-for-appearances-menu-mod] | `bin/input.xml` `input.settings` | :de: <sub>[AMM - The Appearances Menu Mod]</sub>
 ||
 [input-settings-for-no-time-for-gwent] | `input.settings` | :de: <sub>[No time for Gwent]</sub>
 ||
@@ -81,13 +79,12 @@ Mods | -
 
 [Fast Travel Anywhere (Teleport to Map Pin) - Teleport to Freecam - Resurrection (nextGen ready)]: https://www.nexusmods.com/witcher3/mods/4558
 
-[user-settings-for-sort-everything]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-user-settings-for-sort-everything
 [input-settings-for-no-time-for-gwent]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-settings-for-no-time-for-gwent
 [input-settings-for-fast-travel-anywhere]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-settings-for-fast-travel-anywhere
 [input-settings-for-more-quick-slots]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-settings-for-more-quick-slots
 
-[input-xml-for-autoloot-configurable-allinone]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-autoloot-configurable-allinone
-[input-xml-for-minimap-zoom]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-minimap-zoom
+[input-xml-for-autoloot-configurable-allinone]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-xml-for-autoloot-configurable-allinone
+[input-xml-for-minimap-zoom]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-xml-for-minimap-zoom
 [correct-sorting-for-more-quick-slots]: https://github.com/galeksandrp/witcher3mods/tree/correct-sorting-for-more-quick-slots
 [ultimate-roach-improvement-for-friendly-stash]: https://github.com/galeksandrp/witcher3mods/tree/ultimate-roach-improvement-for-friendly-stash
 [fast-stash-for-friendly-hud]: https://github.com/galeksandrp/witcher3mods/tree/fast-stash-for-friendly-hud
@@ -96,7 +93,7 @@ Mods | -
 [armor-weapon-infinite-buff]: https://github.com/galeksandrp/witcher3mods/tree/armor-weapon-infinite-buff
 [unlimited-custom-markers]: https://github.com/galeksandrp/witcher3mods/tree/unlimited-custom-markers
 [keep-armor-weapon-placesofpower-buffs]: https://github.com/galeksandrp/witcher3mods/tree/keep-armor-weapon-placesofpower-buffs
-[input-xml-for-appearances-menu-mod]: https://github.com/galeksandrp/witcher3mods/tree/input-xml-for-appearances-menu-mod
+[input-xml-for-appearances-menu-mod]: https://github.com/galeksandrp/witcher3mods/tree/settings/witcher3mods-input-xml-for-appearances-menu-mod
 [free-craft]: https://github.com/galeksandrp/witcher3mods/tree/free-craft
 [free-rune-glyph-removal]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal
 [free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash]: https://github.com/galeksandrp/witcher3mods/tree/free-rune-glyph-removal-and-ultimate-roach-improvement-for-friendly-stash
